@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstSelectActivity">
+
+    <!-- 안내 문구 -->
+    <TextView
+        android:id="@+id/select_word_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="평소 자주 사용하거나 알고 싶은\n단어를 선택해주세요."
+        android:textSize="18.5dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:background="@drawable/radius_background"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginTop="48dp"
+        android:padding="30dp"/>
+
+    <!-- 선택할 영단어 리스트 -->
+    <!--<ListView
+        android:id="@+id/select_word_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/select_word_notice">-->
+
+        <!-- 영어 -->
+        <!-- <TextView
+            android:id="@+id/select_word_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" /> -->
+        <!-- 한글 -->
+        <!-- <TextView
+            android:id="@+id/select_word_korean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </ListView>-->
+
+</RelativeLayout>
