@@ -15,7 +15,7 @@
         <activity
             android:name=".FirstSelectActivity"
             android:exported="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/NoTitleBarTheme">
             <!-- 시작 페이지 지정 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/NoTitleBarTheme" >
         </activity>
     </application>
 
