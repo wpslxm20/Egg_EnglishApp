@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center">
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="310dp"
+    android:layout_height="40dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginVertical="8dp"
+    android:background="@drawable/edge"
+    android:gravity="center_vertical"
+    >
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:width="150dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#5C5B5B"
+        android:textSize="16sp"
+        />
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        app:srcCompat="@drawable/delete_icon"
+        android:layout_marginTop="3dp"/>
+
+</LinearLayout>
