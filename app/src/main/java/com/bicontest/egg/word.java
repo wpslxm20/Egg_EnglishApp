@@ -1,6 +1,9 @@
 package com.bicontest.egg;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class word extends AppCompatActivity {
+    ImageView flash_button;
 
     private RecyclerAdapter adapter;
 
@@ -20,6 +24,16 @@ public class word extends AppCompatActivity {
 
         init();
         getData();
+
+        flash_button = (ImageView)findViewById(R.id.imageView3);
+        flash_button.setOnClickListener(new flashClickListener());
+    }
+    class flashClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), flash.class);
+            startActivity(intent);//액티비티 띄우기
+        }
     }
 
     private void init() {
