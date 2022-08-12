@@ -42,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
 
         // 폴더 리스트에 폴더명 정보 전달
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < 2; i++){
             addFolderItem(folderNames[i]);
         }
+        addFolderItem("+");
 
         mFolderRecyclerViewAdapter = new FoldersAdapter(mFolderList);
         mFolderRecyclerView.setAdapter(mFolderRecyclerViewAdapter);
