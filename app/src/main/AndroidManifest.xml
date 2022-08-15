@@ -28,6 +28,16 @@
             android:exported="false"
             android:theme="@style/NoTitleBarTheme" >
         </activity>
+        <activity
+            android:name=".flash"
+            android:exported="true"
+            android:theme="@style/NoTitleBarTheme">
+        </activity>
+        <activity
+            android:name=".word"
+            android:exported="true"
+            android:theme="@style/NoTitleBarTheme">
+        </activity>
     </application>
 
 </manifest>
