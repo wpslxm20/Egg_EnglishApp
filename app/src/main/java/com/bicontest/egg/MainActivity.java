@@ -1,11 +1,11 @@
 package com.bicontest.egg;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import java.util.ArrayList;
 
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mRecommendRecyclerView.setAdapter(mRecommendRecyclerViewAdapter);
         mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // 수직 리스트
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
+
 
         // 폴더 리스트에 폴더명 정보 전달
         for(int i = 0; i < 2; i++){

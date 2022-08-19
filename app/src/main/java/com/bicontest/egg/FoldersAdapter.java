@@ -1,6 +1,7 @@
 package com.bicontest.egg;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,20 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
             super(itemView);
 
             folder_name = (TextView) itemView.findViewById(R.id.folder_name);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 클릭된 아이템의 위치 찾아내기
+                    int pos = getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION) {
+                        Context folderContext = v.getContext();
+                        Intent wordIntent = new Intent(folderContext, word.class);
+//                        Intent intent = new Intent(getApplicationContext(), word.class);
+                        ((MainActivity)folderContext).startActivity(wordIntent);
+                    }
+                }
+            });
         }
     }
 
