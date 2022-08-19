@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // 수직 리스트
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
 
+
         // 폴더 리스트에 폴더명 정보 전달
         for(int i = 0; i < 2; i++){
             addFolderItem(folderNames[i]);

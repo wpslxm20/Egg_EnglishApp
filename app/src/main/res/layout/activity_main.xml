@@ -126,7 +126,7 @@
             android:id="@+id/folders_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/folders_title"/>
+            android:layout_below="@id/folders_title" />
 
     </RelativeLayout>
 
