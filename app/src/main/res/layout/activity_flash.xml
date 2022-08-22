@@ -17,7 +17,6 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_marginTop="50dp"
             android:background="#FFE7A9"
             android:gravity="center"
             android:orientation="horizontal">
@@ -48,7 +47,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/setting_btn"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -75,7 +74,7 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/leftBtn"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -91,17 +90,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="apple"
+                        android:text="영어"
                         android:textSize="28sp"
-                        android:textStyle="bold">
+                        android:textStyle="bold"
+                        android:id="@+id/engWord"
+                        >
                     </TextView>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="사과"
+                        android:text="한글"
                         android:textSize="28sp"
                         android:layout_marginTop="30dp"
-                        android:textStyle="bold">
+                        android:textStyle="bold"
+                        android:id="@+id/korWord">
 
                     </TextView>
 
@@ -109,7 +111,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/rightBtn"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -150,6 +152,7 @@
 
 
         </LinearLayout>
+
     </LinearLayout>
 
 

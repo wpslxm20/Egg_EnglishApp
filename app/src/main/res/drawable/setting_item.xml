@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    // -를 주면 테두리가 사라짐
+    <item
+        android:bottom="1dp"
+        android:left="-2dp"
+        android:right="-2dp"
+        android:top="-2dp">
+        <shape android:shape="rectangle">
+            // stroke는 테두리의 두께와 색상
+            //solid는 배경색상을 지정
+            <stroke
+            android:width="1.5dp"
+            android:color="#cccccc"/>
+            <solid android:color="#FFFfff" />
+        </shape>
+    </item>
+</layer-list>
