@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="15dp"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="35dp"
+    android:background="@drawable/radius_background">
+
+    <!-- 폴더명 -->
+    <TextView
+        android:id="@+id/folder_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:textColor="@color/black"/>
+
+</RelativeLayout>
