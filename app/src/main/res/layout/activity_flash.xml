@@ -103,6 +103,8 @@
                         android:textStyle="bold">
 
                     </TextView>
+
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <ImageView
@@ -134,11 +136,14 @@
                     android:textColor="#000000"
 
                     android:textSize="20sp" />
+
                 <Switch
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
+                    android:layout_marginLeft="10dp"
+                    android:thumb="@drawable/switch_thumb"
                     android:track="@drawable/switch_track_selector"
-                    android:thumb="@drawable/switch_thumb"/>
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
