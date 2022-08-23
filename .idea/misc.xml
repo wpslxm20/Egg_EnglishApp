@@ -21,10 +21,12 @@
         <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/drawable/switch_track_selector.xml" value="0.366" />
         <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_flash.xml" value="0.22" />
         <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_search_base.xml" value="0.2890625" />
         <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_setting.xml" value="0.25" />
         <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/layout.xml" value="0.3515625" />
         <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/some_round_corner.xml" value="0.3515625" />
         <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/word.xml" value="0.22" />
+        <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/menu/search_base.xml" value="0.3651041666666667" />
       </map>
     </option>
   </component>
