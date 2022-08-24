@@ -1,6 +1,8 @@
 package com.bicontest.egg;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +16,7 @@ public class flash extends AppCompatActivity {
 
     int wordIndex = 0, maxIndex = 11;
 
-    ImageView left_btn, right_btn;
+    ImageView left_btn, right_btn, setting_btn;
     TextView kor_text, eng_text;
 
     List<String> listTitle = Arrays.asList("apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study");
@@ -42,9 +44,11 @@ public class flash extends AppCompatActivity {
 
         left_btn = (ImageView) findViewById(R.id.leftBtn);
         right_btn = (ImageView) findViewById(R.id.rightBtn);
+        setting_btn = (ImageView) findViewById(R.id.setting_btn);
 
         left_btn.setOnClickListener(new leftClickListener());
         right_btn.setOnClickListener(new rightClickListener());
+        setting_btn.setOnClickListener(new settingClickListener());
 
         eng_text = (TextView) findViewById(R.id.engWord);
         kor_text = (TextView) findViewById(R.id.korWord);
@@ -94,6 +98,13 @@ public class flash extends AppCompatActivity {
                 eng_text.setText(listTitle.get(wordIndex));
                 kor_text.setText(listContent.get(wordIndex));
             }
+        }
+    }
+    class settingClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), Setting.class);
+            startActivity(intent);
         }
     }
 //        flash_button = (ImageView)findViewById(R.id.imageView3);
