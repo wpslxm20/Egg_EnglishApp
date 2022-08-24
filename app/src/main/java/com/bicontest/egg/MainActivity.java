@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         setting_btn = (ImageView) findViewById(R.id.setting_btn);
-        setting_btn.setOnClickListener(new settingClickListener());
+        setting_btn.setOnClickListener(new MainActivity.settingClickListener());
 
         firstInit();
 
