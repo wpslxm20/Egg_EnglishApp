@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class word extends AppCompatActivity {
-    ImageView flash_button;
+    ImageView flash_button, setting_btn;
 
     private RecyclerAdapter adapter;
 
@@ -27,6 +27,8 @@ public class word extends AppCompatActivity {
 
         flash_button = (ImageView)findViewById(R.id.imageView3);
         flash_button.setOnClickListener(new flashClickListener());
+
+        setting_btn = (ImageView) findViewById(R.id.setting_btn);
     }
     class flashClickListener implements View.OnClickListener {
         @Override

@@ -1,16 +1,16 @@
 package com.bicontest.egg;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -34,10 +34,20 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<FoldersViewItem> mFolderList;
     private FoldersAdapter mFolderRecyclerViewAdapter;
 
+
+
+    ImageView setting_btn;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        setting_btn = (ImageView) findViewById(R.id.setting_btn);
+        setting_btn.setOnClickListener(new settingClickListener());
 
         firstInit();
 
@@ -113,5 +123,13 @@ public class MainActivity extends AppCompatActivity {
         item.setFolderName(folderName);
 
         mFolderList.add(item);
+    }
+
+    class settingClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), Setting.class);
+            startActivity(intent);
+        }
     }
 }
