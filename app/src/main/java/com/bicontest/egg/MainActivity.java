@@ -24,11 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<RecommendViewItem> mRecommendList;
     private RecommendAdapter mRecommendRecyclerViewAdapter;
 
-    // 추천 영단어 열고닫기 버튼&내용
-    private ImageButton mOpenBtn;                    // 열기 버튼
-    private ImageButton mCloseBtn;                   // 닫기 버튼
-    private RelativeLayout mSubrecommnedWords;  // 추천단어의 연관어 내용 부분
-
     // 폴더 리스트 표시에 필요한 것들
     private RecyclerView mFolderRecyclerView;
     private ArrayList<FoldersViewItem> mFolderList;
@@ -50,28 +45,6 @@ public class MainActivity extends AppCompatActivity {
         mRecommendRecyclerView.setAdapter(mRecommendRecyclerViewAdapter);
         mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // 수직 리스트
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
-
-
-        // 추천 단어의 연관단어 목록을 열기 위한 부분
-        mOpenBtn = (ImageButton) findViewById(R.id.recommned_open_btn);
-        mCloseBtn = (ImageButton) findViewById(R.id.recommned_close_btn);
-        mSubrecommnedWords = (RelativeLayout) findViewById(R.id.subrecommned_words);
-
-        /*mOpenBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSubrecommnedWords.setVisibility(View.VISIBLE);
-            }
-        });*/
-
-        /*mCloseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSubrecommnedWords.setVisibility(View.GONE);
-            }
-        });
-        */
-
 
         // 폴더 리스트에 폴더명 정보 전달
         for(int i = 0; i < 2; i++){

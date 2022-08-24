@@ -25,11 +25,11 @@
             android:layout_marginHorizontal="20dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:scaleType="fitXY"
                 android:layout_marginVertical="10dp"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginLeft="15dp"
                 android:src="@drawable/search_icon"/>
 
             <!-- 검색어 입력창 -->
@@ -37,9 +37,9 @@
                 android:id="@+id/search_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
                 android:background="@null"
                 android:paddingVertical="10dp"
-                android:layout_marginLeft="50dp"
                 android:textColor="@color/black"
                 android:textSize="14.5dp" />
         </RelativeLayout>
