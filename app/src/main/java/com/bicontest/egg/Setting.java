@@ -31,10 +31,16 @@ public class Setting extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 //입력이 끝났을 때
-                int flashsec = Integer.parseInt(flashEdit.getText().toString());
-                ((glovalVariable) getApplication()).setFlashSecond(flashsec);
-                int a = ((glovalVariable) getApplication()).getFlashSecond();
-                abc.setText(Integer.toString(a));
+                String flashText = flashEdit.getText().toString();
+                if(flashText.getBytes().length <= 0){
+                    abc.setText("숫자를 입력하세요");
+                }
+                else {
+                    int flashsec = Integer.parseInt(flashText);
+                    ((glovalVariable) getApplication()).setFlashSecond(flashsec);
+                    int a = ((glovalVariable) getApplication()).getFlashSecond();
+                    abc.setText(Integer.toString(a));
+                }
             }
         });
     }
