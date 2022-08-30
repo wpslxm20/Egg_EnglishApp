@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -32,13 +33,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     ImageView setting_btn;
-
+    Toolbar search_bar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //툴바
+        search_bar = findViewById(R.id.searchBar);
+        setSupportActionBar(search_bar);
 
 
         setting_btn = (ImageView) findViewById(R.id.setting_btn);

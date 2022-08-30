@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Setting">
 
-    <include
-        layout="@layout/search_bar"
-        android:id="@+id/search_bar" /><LinearLayout
+
+    <LinearLayout
     android:id="@+id/linearLayout3"
     android:layout_width="0dp"
     android:layout_height="0dp"
@@ -20,35 +19,35 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.0">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="#FFE7A9"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#FFE7A9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:clickable="true"
-            app:srcCompat="@drawable/settin_icon"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/settin_icon"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="설정"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:textStyle="bold">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="설정"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold">
 
-        </TextView>
-    </LinearLayout>
+            </TextView>
+        </LinearLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"

@@ -23,6 +23,7 @@ public class flash extends AppCompatActivity {
     TextView kor_text, eng_text;
     Switch flash_switch;
 
+
     List<String> listTitle = Arrays.asList("apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study");
     List<String> listContent = Arrays.asList(
             "사과",
@@ -127,25 +128,11 @@ public class flash extends AppCompatActivity {
                 TimerTask flashTT = new TimerTask() {
                     @Override
                     public void run() {
-                        if (wordIndex + 1 < maxIndex) {
-                            left_btn.setEnabled(true);
-                            left_btn.setVisibility(View.VISIBLE);
-                            wordIndex++;
-                            eng_text.setText(listTitle.get(wordIndex));
-                            kor_text.setText(listContent.get(wordIndex));
-                        }
-                        else if(wordIndex + 1 == maxIndex) {
-                            left_btn.setEnabled(true);
-                            right_btn.setEnabled(false);
-                            right_btn.setVisibility(View.INVISIBLE);
-                            wordIndex++;
-                            eng_text.setText(listTitle.get(wordIndex));
-                            kor_text.setText(listContent.get(wordIndex));
-                        }
+
                     }
                 };
 
-                flashTimer.schedule(flashTT, flashSecond, flashSecond);
+                flashTimer.schedule(flashTT, 5, 5);
             }
             else {
 

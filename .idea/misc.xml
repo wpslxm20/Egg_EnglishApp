@@ -5,14 +5,18 @@
       <map>
         <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/drawable/edge.xml" value="0.1115" />
         <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/drawable/round_corner.xml" value="0.105" />
-        <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_flash.xml" value="0.2" />
+        <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_flash.xml" value="0.152" />
         <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_setting.xml" value="0.128" />
         <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/layout/first_select_item.xml" value="0.1" />
-        <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/layout/search_bar.xml" value="0.11752786220871327" />
         <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/layout/word.xml" value="0.2" />
         <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/layout/worditem.xml" value="0.5389344262295082" />
         <entry key="..\:/Users/gogos/StudioProjects/Egg_EnglishApp/app/src/main/res/menu/search_base.xml" value="0.1125" />
+        <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_flash.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/activity_setting.xml" value="0.3398148148148148" />
+        <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/layout/search_bar.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/sumin/AndroidStudioProjects/Egg_EnglishApp/app/src/main/res/menu/search_toolbar.xml" value="0.3651041666666667" />
         <entry key="..\:/android/Egg/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
       </map>
     </option>
