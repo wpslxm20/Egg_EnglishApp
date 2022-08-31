@@ -2,6 +2,8 @@ package com.bicontest.egg;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -22,6 +24,26 @@ public class flash extends AppCompatActivity {
     ImageView left_btn, right_btn, setting_btn;
     TextView kor_text, eng_text;
     Switch flash_switch;
+
+    Handler flash_handler = new Handler(){
+        public void handleMessage(Message msg){
+            if (wordIndex + 1 < maxIndex) {
+                left_btn.setEnabled(true);
+                left_btn.setVisibility(View.VISIBLE);
+                wordIndex++;
+                eng_text.setText(listTitle.get(wordIndex));
+                kor_text.setText(listContent.get(wordIndex));
+            }
+            else if(wordIndex + 1 == maxIndex) {
+                left_btn.setEnabled(true);
+                right_btn.setEnabled(false);
+                right_btn.setVisibility(View.INVISIBLE);
+                wordIndex++;
+                eng_text.setText(listTitle.get(wordIndex));
+                kor_text.setText(listContent.get(wordIndex));
+            }
+        }
+    };
 
 
     List<String> listTitle = Arrays.asList("apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study");
@@ -119,23 +141,26 @@ public class flash extends AppCompatActivity {
 
     //switch
     class flashSwitchListener implements CompoundButton.OnCheckedChangeListener{
+        Timer flashTimer;
+        TimerTask flashTT;
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if(isChecked) {
-                int flashSecond = ((glovalVariable) getApplication()).getFlashSecond();
+                int flashSecond = ((glovalVariable) getApplication()).getFlashSecond() * 1000;
 
-                Timer flashTimer = new Timer();
-                TimerTask flashTT = new TimerTask() {
+                flashTimer = new Timer();
+                flashTT = new TimerTask() {
                     @Override
                     public void run() {
-
+                        Message msg = flash_handler.obtainMessage();
+                        flash_handler.sendMessage(msg);
                     }
                 };
 
-                flashTimer.schedule(flashTT, 5, 5);
+                flashTimer.schedule(flashTT, flashSecond, flashSecond);
             }
             else {
-
+                flashTT.cancel();
             }
         }
     }
