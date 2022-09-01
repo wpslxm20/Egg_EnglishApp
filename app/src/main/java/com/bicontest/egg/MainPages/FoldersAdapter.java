@@ -15,6 +15,7 @@ import com.bicontest.egg.word;
 
 import java.util.ArrayList;
 
+// 메인 화면에서 보이는 폴더
 public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersViewHolder> {
 
     public class FoldersViewHolder extends RecyclerView.ViewHolder {

@@ -14,10 +14,12 @@ import com.bicontest.egg.R;
 import com.bicontest.egg.Setting;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private String[][] recommendWords = {{"apple", "사과"}, {"computer", "컴퓨터"}, {"science", "과학"}, {"student", "학생"}, {"August", "8월"}};
+    private String[][][] toggleWords = {{{"banana", "바나나"}, {"grape", "포도"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}};
     private String[] folderNames = {"폴더1", "폴더2", "폴더3"};
 
     // 추천 영단어 리스트 표시에 필요한 것들
@@ -25,16 +27,18 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<RecommendViewItem> mRecommendList;
     private RecommendAdapter mRecommendRecyclerViewAdapter;
 
+    // 연관어 표시에 필요한 것들
+    private RecyclerView mToggleWordsRecyclerView;
+    private ArrayList<ToggleWordsViewItem> mToggleWordsList;
+    private ToggleWordsAdapter mToggleWordsRecyclerViewAdapter;
+
     // 폴더 리스트 표시에 필요한 것들
     private RecyclerView mFolderRecyclerView;
     private ArrayList<FoldersViewItem> mFolderList;
     private FoldersAdapter mFolderRecyclerViewAdapter;
 
-
-
+    // 설정 버튼
     ImageView setting_btn;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +51,20 @@ public class MainActivity extends AppCompatActivity {
 
         firstInit();
 
-        // 추천 단어 리스트에 단어의 영어, 한글 정보 전달
+        // 추천 단어 리스트에 단어의 영어, 한글 정보 전달 + 연관어 정보
         for(int i = 0; i < 5; i++){
-            addRecommendItem(recommendWords[i][0], recommendWords[i][1]);
+            addRecommendItem(recommendWords[i][0], recommendWords[i][1], toggleWords[i]);
         }
 
         mRecommendRecyclerViewAdapter = new RecommendAdapter(mRecommendList);
         mRecommendRecyclerView.setAdapter(mRecommendRecyclerViewAdapter);
         mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // 수직 리스트
+        //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
+
+        // 연관어 토글 내용을 위한 부분
+        //mToggleWordsRecyclerViewAdapter = new ToggleWordsAdapter(mToggleWordsList);
+        //mToggleWordsRecyclerView.setAdapter(mToggleWordsRecyclerViewAdapter);
+        //mToggleWordsRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // 수직 리스트
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
 
         // 폴더 리스트에 폴더명 정보 전달
@@ -81,11 +91,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 추천 리스트에 단어의 영어, 한글 정보 추가
-    private void addRecommendItem(String wordEnglish, String wordKorean){
+    private void addRecommendItem(String wordEnglish, String wordKorean, String[][] toggleWord){
         RecommendViewItem item = new RecommendViewItem();
 
         item.setWordEnglish(wordEnglish);
         item.setWordKorean(wordKorean);
+
+        /*ToggleWordsViewItem toggleItem = new ToggleWordsViewItem();
+        for (int i=0; i<toggleWord.length; i++) {
+            toggleItem.setToggleWordEnglish(toggleWord[i][0]);
+            toggleItem.setToggleWordKorean(toggleWord[i][1]);
+        }*/
 
         mRecommendList.add(item);
     }
@@ -99,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         mFolderList.add(item);
     }
 
+    // 설정 버튼 클릭 시
     class settingClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {

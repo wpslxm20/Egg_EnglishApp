@@ -13,6 +13,7 @@ import com.bicontest.egg.R;
 
 import java.util.ArrayList;
 
+// 최초 화면에서 선택하는 단어
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {

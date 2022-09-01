@@ -1,4 +1,3 @@
-// 초기 페이지 - 관심 단어 선택
 package com.bicontest.egg.FirstPages;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +14,7 @@ import com.bicontest.egg.R;
 
 import java.util.ArrayList;
 
+// 초기 페이지 - 관심 단어 선택
 public class FirstSelectActivity extends AppCompatActivity {
 
     private String[][] words = {{"apple", "사과"}, {"computer", "컴퓨터"}, {"science", "과학"}, {"student", "학생"}, {"August", "8월"}};
