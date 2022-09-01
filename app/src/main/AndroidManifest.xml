@@ -18,7 +18,7 @@
             android:exported="true"
             android:theme="@style/NoTitleBarTheme"/>
         <activity
-            android:name=".FirstSelectActivity"
+            android:name=".FirstPages.FirstSelectActivity"
             android:exported="true"
             android:theme="@style/NoTitleBarTheme" >
 

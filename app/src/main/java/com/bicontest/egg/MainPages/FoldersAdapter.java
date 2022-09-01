@@ -1,4 +1,4 @@
-package com.bicontest.egg;
+package com.bicontest.egg.MainPages;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bicontest.egg.MainActivity;
+import com.bicontest.egg.R;
+import com.bicontest.egg.word;
+
 import java.util.ArrayList;
 
+// 메인 화면에서 보이는 폴더
 public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersViewHolder> {
 
     public class FoldersViewHolder extends RecyclerView.ViewHolder {

@@ -1,5 +1,6 @@
-package com.bicontest.egg;
+package com.bicontest.egg.FirstPages;
 
+// 최초 화면에서 선택하는 단어
 public class SelectViewItem {
     private String mWordEnglish;
     private String mWordKorean;

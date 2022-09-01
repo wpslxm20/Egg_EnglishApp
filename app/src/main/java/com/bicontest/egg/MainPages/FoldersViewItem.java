@@ -1,5 +1,6 @@
-package com.bicontest.egg;
+package com.bicontest.egg.MainPages;
 
+// 메인 화면에서 보이는 폴더
 public class FoldersViewItem {
     private String mFolderName;
 

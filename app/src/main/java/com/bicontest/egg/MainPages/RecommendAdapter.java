@@ -1,7 +1,6 @@
-package com.bicontest.egg;
+package com.bicontest.egg.MainPages;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +9,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bicontest.egg.R;
 
 import java.util.ArrayList;
 
+// 메인 화면에서 보이는 추천 단어
 public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.RecommendViewHolder> {
 
     public class RecommendViewHolder extends RecyclerView.ViewHolder {
         TextView word_english;
         TextView word_korean;
 
-        // 추천 영단어 열고닫기 버튼&내용
+        // 연관어 열고닫기 버튼&내용
         private ImageButton mOpenBtn;                    // 열기 버튼
         private ImageButton mCloseBtn;                   // 닫기 버튼
         private RelativeLayout mSubrecommnedWords;  // 추천단어의 연관어 내용 부분
