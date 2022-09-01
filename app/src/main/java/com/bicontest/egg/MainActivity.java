@@ -1,4 +1,4 @@
-package com.bicontest.egg.MainPages;
+package com.bicontest.egg;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bicontest.egg.R;
-import com.bicontest.egg.Setting;
+import com.bicontest.egg.MainPages.FoldersAdapter;
+import com.bicontest.egg.MainPages.FoldersViewItem;
+import com.bicontest.egg.MainPages.RecommendAdapter;
+import com.bicontest.egg.MainPages.RecommendViewItem;
+import com.bicontest.egg.MainPages.ToggleWordsAdapter;
+import com.bicontest.egg.MainPages.ToggleWordsViewItem;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 

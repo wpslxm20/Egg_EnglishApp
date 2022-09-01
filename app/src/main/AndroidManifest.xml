@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainPages.MainActivity"
+            android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/NoTitleBarTheme" />
         <activity

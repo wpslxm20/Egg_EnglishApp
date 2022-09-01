@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.bicontest.egg.MainPages.MainActivity;
+import com.bicontest.egg.MainActivity;
 import com.bicontest.egg.R;
 
 import java.util.ArrayList;
