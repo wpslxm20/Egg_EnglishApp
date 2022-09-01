@@ -17,7 +17,11 @@ public class Setting extends AppCompatActivity {
         TextView abc = (TextView)findViewById(R.id.abc);
 
         EditText flashEdit = (EditText) findViewById(R.id.flashEdit);
+        //이렇게 안 해주면 flashSecond 수정 후에 activity 새로고침 되면 flash_editText 내용이 초기화됨
+        flashEdit.setText(Integer.toString(((glovalVariable) getApplication()).getFlashSecond()));
         flashEdit.addTextChangedListener(new TextWatcher() {
+
+            // 안 쓰는 거 주석 처리했더니 에러 남
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 //입력하기 전
@@ -31,10 +35,16 @@ public class Setting extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 //입력이 끝났을 때
-                int flashsec = Integer.parseInt(flashEdit.getText().toString());
-                ((glovalVariable) getApplication()).setFlashSecond(flashsec);
-                int a = ((glovalVariable) getApplication()).getFlashSecond();
-                abc.setText(Integer.toString(a));
+                String flashText = flashEdit.getText().toString();
+                if(flashText.getBytes().length <= 0){
+                    abc.setText("숫자를 입력하세요");
+                }
+                else {
+                    int flashsec = Integer.parseInt(flashText);
+                    ((glovalVariable) getApplication()).setFlashSecond(flashsec);
+                    int a = ((glovalVariable) getApplication()).getFlashSecond();
+                    abc.setText(Integer.toString(a));
+                }
             }
         });
     }
