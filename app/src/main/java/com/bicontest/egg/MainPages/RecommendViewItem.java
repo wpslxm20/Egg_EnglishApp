@@ -1,6 +1,6 @@
-package com.bicontest.egg;
+package com.bicontest.egg.MainPages;
 
-public class SelectViewItem {
+public class RecommendViewItem {
     private String mWordEnglish;
     private String mWordKorean;
 

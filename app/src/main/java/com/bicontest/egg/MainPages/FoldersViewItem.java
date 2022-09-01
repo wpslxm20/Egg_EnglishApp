@@ -1,4 +1,4 @@
-package com.bicontest.egg;
+package com.bicontest.egg.MainPages;
 
 public class FoldersViewItem {
     private String mFolderName;

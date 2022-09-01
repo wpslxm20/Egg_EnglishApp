@@ -1,15 +1,17 @@
 // 초기 페이지 - 관심 단어 선택
-package com.bicontest.egg;
+package com.bicontest.egg.FirstPages;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.bicontest.egg.MainPages.MainActivity;
+import com.bicontest.egg.R;
 
 import java.util.ArrayList;
 

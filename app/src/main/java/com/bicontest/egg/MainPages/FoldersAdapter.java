@@ -1,4 +1,4 @@
-package com.bicontest.egg;
+package com.bicontest.egg.MainPages;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bicontest.egg.R;
+import com.bicontest.egg.word;
 
 import java.util.ArrayList;
 

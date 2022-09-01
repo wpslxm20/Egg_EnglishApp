@@ -1,16 +1,17 @@
-package com.bicontest.egg;
+package com.bicontest.egg.MainPages;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bicontest.egg.R;
+import com.bicontest.egg.Setting;
 
 import java.util.ArrayList;
 
