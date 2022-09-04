@@ -10,7 +10,6 @@
         android:id="@+id/search_bar"
         layout="@layout/search_bar" />
 
-
     <!-- 상단바 -->
 <!--    <RelativeLayout-->
 <!--        android:id="@+id/header"-->
@@ -72,8 +71,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/folders_title">
+            android:layout_height="wrap_content">
 
             <!-- 추천 단어 리스트 -->
             <!-- 헤더가 60dp이므로 위에 그만큼 띄우고 배치 -->
