@@ -21,7 +21,6 @@
             android:name=".FirstPages.FirstSelectActivity"
             android:exported="true"
             android:theme="@style/NoTitleBarTheme" >
-
             <!-- 시작 페이지 지정 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +30,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/NoTitleBarTheme" />
         <activity
             android:name=".flash"
