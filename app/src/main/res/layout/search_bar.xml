@@ -6,7 +6,8 @@
     android:layout_height="60dp"
     android:background="#FFE7A9"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    app:menu="@menu/search_toolbar">
 
 
 </androidx.appcompat.widget.Toolbar>

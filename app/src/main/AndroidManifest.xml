@@ -41,6 +41,9 @@
             android:name=".word"
             android:exported="true"
             android:theme="@style/NoTitleBarTheme" />
-    </application>
+
+
+
+</application>
 
 </manifest>
