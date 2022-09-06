@@ -16,14 +16,14 @@ import java.util.ArrayList;
 // 메인 화면에서 추천 단어 토글 열면 보이는 연관어
 public class ToggleWordsAdapter extends RecyclerView.Adapter<ToggleWordsAdapter.ToggleWordsViewHolder> {
     public class ToggleWordsViewHolder extends RecyclerView.ViewHolder {
-        TextView word_english;
-        TextView word_korean;
+        TextView toggle_word_english;
+        TextView toggle_word_korean;
 
         public ToggleWordsViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            word_english = (TextView) itemView.findViewById(R.id.subrecommend_word_english);
-            word_korean = (TextView) itemView.findViewById(R.id.subrecommend_word_korean);
+            toggle_word_english = (TextView) itemView.findViewById(R.id.subrecommend_word_english);
+            toggle_word_korean = (TextView) itemView.findViewById(R.id.subrecommend_word_korean);
         }
     }
 
@@ -50,8 +50,8 @@ public class ToggleWordsAdapter extends RecyclerView.Adapter<ToggleWordsAdapter.
     public void onBindViewHolder(@NonNull ToggleWordsAdapter.ToggleWordsViewHolder holder, int position) {
         ToggleWordsViewItem item = mList.get(position);
 
-        holder.word_english.setText(item.getToggleWordEnglish());  // 영어
-        holder.word_korean.setText(item.getToggleWordKorean());   // 한글
+        holder.toggle_word_english.setText(item.getToggleWordEnglish());  // 영어
+        holder.toggle_word_korean.setText(item.getToggleWordKorean());   // 한글
     }
 
     @Override

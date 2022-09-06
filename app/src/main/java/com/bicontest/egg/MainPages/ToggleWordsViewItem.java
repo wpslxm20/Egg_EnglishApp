@@ -5,6 +5,11 @@ public class ToggleWordsViewItem {
     private String mToggleWordEnglish;
     private String mToggleWordKorean;
 
+    public ToggleWordsViewItem(String toggleWordEnglish, String toggleWordKorean) {
+        this.mToggleWordEnglish = toggleWordEnglish;
+        this.mToggleWordKorean = toggleWordKorean;
+    }
+
     public String getToggleWordEnglish() {
         return mToggleWordEnglish;
     }

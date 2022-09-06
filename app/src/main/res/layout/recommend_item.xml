@@ -84,7 +84,7 @@
             android:visibility="gone"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_reco_background"
+            android:background="@drawable/border_reco_toggle_background"
             android:padding="5dp"
             android:layout_below="@id/recommend_word_group">
 
