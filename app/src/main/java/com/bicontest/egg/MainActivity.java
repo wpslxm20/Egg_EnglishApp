@@ -1,16 +1,27 @@
 package com.bicontest.egg;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.ImageView;
 
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
+import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -134,4 +145,51 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }*/
+
+    //toolbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_toolbar, menu);
+        SearchManager searchManager = (SearchManager) this.getSystemService(Context.SEARCH_SERVICE);
+        MenuItem mSearch = menu.findItem(R.id.menu_search);
+
+
+        SearchView sv = (SearchView) findViewById(R.id.menu_search);
+        sv.onActionViewExpanded(); //바로 검색 할 수 있도록
+//        if (searchView != null) {
+//            searchView.setSearchableInfo(searchManager.getSearchableInfo(this.getComponentName()));
+//            searchView.setQueryHint("hint");
+//            queryTextListener = new SearchView.OnQueryTextListener() {
+//                 @Override
+//                 public boolean onQueryTextChange(String newText) {
+//
+//                    return true;
+//                 }
+//                 @Override
+//                 public boolean onQueryTextSubmit(String query) {
+//
+//                    return true;
+//                 }
+//            };
+//            searchView.setOnQueryTextListener(queryTextListener);
+//         }
+
+//        SearchView sv = (SearchView) mSearch.getActionView();
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+
+            @Override
+            public boolean onQueryTextSubmit(String query){
+                return true;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText){
+                return true;
+            }
+        });
+
+
+        return true;
+    }
+
 }
