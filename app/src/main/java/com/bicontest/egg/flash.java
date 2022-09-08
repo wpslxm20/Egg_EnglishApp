@@ -24,6 +24,7 @@ public class flash extends AppCompatActivity {
     ImageView left_btn, right_btn, setting_btn;
     TextView kor_text, eng_text;
     Switch flash_switch;
+    boolean flash_random_bool;
 
     Handler flash_handler = new Handler(){
         public void handleMessage(Message msg){
@@ -84,6 +85,12 @@ public class flash extends AppCompatActivity {
 
         eng_text.setText(listTitle.get(wordIndex));
         kor_text.setText(listContent.get(wordIndex));
+
+        //플래시 랜덤이 true이면 suffle
+        flash_random_bool = ((glovalVariable) getApplication()).getFlashRandBool();
+        if (flash_random_bool) {
+
+        }
 
 
 
