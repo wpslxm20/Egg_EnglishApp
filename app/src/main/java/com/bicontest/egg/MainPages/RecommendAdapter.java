@@ -20,6 +20,9 @@ import java.util.ArrayList;
 // 메인 화면에서 보이는 추천 단어
 public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.RecommendViewHolder> {
 
+    // 연관어 토글 recyclerview 처리를 위해 필요
+    private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
+
     public class RecommendViewHolder extends RecyclerView.ViewHolder {
         TextView word_english;
         TextView word_korean;
@@ -27,13 +30,18 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.Reco
         // 연관어 열고닫기 버튼&내용
         private ImageButton mOpenBtn;                    // 열기 버튼
         private ImageButton mCloseBtn;                   // 닫기 버튼
-        private RelativeLayout mSubrecommnedWords;  // 추천단어의 연관어 내용 부분
+        private RelativeLayout mSubrecommnedWords;       // 추천단어의 연관어 내용 부분
+
+        // 연관어 내용 recyclerview
+        private RecyclerView mToggleWordRecyclerView;
 
         public RecommendViewHolder(@NonNull View itemView) {
             super(itemView);
 
             word_english = (TextView) itemView.findViewById(R.id.recommend_word_english);
             word_korean = (TextView) itemView.findViewById(R.id.recommend_word_korean);
+
+           mToggleWordRecyclerView = (RecyclerView) itemView.findViewById(R.id.toggle_words_recyclerview);
 
             // 추천 단어의 연관단어 목록을 열기 위한 부분
             mOpenBtn = (ImageButton) itemView.findViewById(R.id.recommned_open_btn);
@@ -95,6 +103,19 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.Reco
 
         holder.word_english.setText(item.getWordEnglish());  // 영어
         holder.word_korean.setText(item.getWordKorean());   // 한글
+
+        // 연관어 recyclerview 처리
+        // 레이아웃 매니저 설정
+        LinearLayoutManager layoutManager = new LinearLayoutManager(
+                holder.mToggleWordRecyclerView.getContext()
+        );
+        layoutManager.setInitialPrefetchItemCount(item.getToggleItem().size());
+
+        // adapter 설정
+        ToggleWordsAdapter mToggleWordsAdapter = new ToggleWordsAdapter(item.getToggleItem());
+        holder.mToggleWordRecyclerView.setLayoutManager(layoutManager);
+        holder.mToggleWordRecyclerView.setAdapter(mToggleWordsAdapter);
+        holder.mToggleWordRecyclerView.setRecycledViewPool(viewPool);
     }
 
     @Override

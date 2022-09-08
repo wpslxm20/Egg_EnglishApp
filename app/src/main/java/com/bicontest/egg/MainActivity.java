@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.ImageView;
 
@@ -44,32 +46,26 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<RecommendViewItem> mRecommendList;
     private RecommendAdapter mRecommendRecyclerViewAdapter;
 
-    // 연관어 표시에 필요한 것들
-    private RecyclerView mToggleWordsRecyclerView;
-    private ArrayList<ToggleWordsViewItem> mToggleWordsList;
-    private ToggleWordsAdapter mToggleWordsRecyclerViewAdapter;
-
     // 폴더 리스트 표시에 필요한 것들
     private RecyclerView mFolderRecyclerView;
     private ArrayList<FoldersViewItem> mFolderList;
     private FoldersAdapter mFolderRecyclerViewAdapter;
 
-    // 설정 버튼
-    ImageView setting_btn;
-    Toolbar search_bar;
+    // ImageView setting_btn; // 설정 버튼
+    Toolbar search_bar;       // 툴바
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //툴바
+        // 툴바
         search_bar = findViewById(R.id.searchBar);
         setSupportActionBar(search_bar);
 
-
-//        setting_btn = (ImageView) findViewById(R.id.setting_btn);
-//        setting_btn.setOnClickListener(new MainActivity.settingClickListener());
+        // 설정 버튼
+        //setting_btn = (ImageView) findViewById(R.id.setting_btn);
+        //setting_btn.setOnClickListener(new MainActivity.settingClickListener());
 
         firstInit();
 
@@ -81,12 +77,6 @@ public class MainActivity extends AppCompatActivity {
         mRecommendRecyclerViewAdapter = new RecommendAdapter(mRecommendList);
         mRecommendRecyclerView.setAdapter(mRecommendRecyclerViewAdapter);
         mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // 수직 리스트
-        //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
-
-        // 연관어 토글 내용을 위한 부분
-        //mToggleWordsRecyclerViewAdapter = new ToggleWordsAdapter(mToggleWordsList);
-        //mToggleWordsRecyclerView.setAdapter(mToggleWordsRecyclerViewAdapter);
-        //mToggleWordsRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // 수직 리스트
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
 
         // 폴더 리스트에 폴더명 정보 전달
@@ -114,18 +104,28 @@ public class MainActivity extends AppCompatActivity {
 
     // 추천 리스트에 단어의 영어, 한글 정보 추가
     private void addRecommendItem(String wordEnglish, String wordKorean, String[][] toggleWord){
-        RecommendViewItem item = new RecommendViewItem();
+        RecommendViewItem recommendItem = new RecommendViewItem();
 
-        item.setWordEnglish(wordEnglish);
-        item.setWordKorean(wordKorean);
+        recommendItem.setWordEnglish(wordEnglish);
+        recommendItem.setWordKorean(wordKorean);
+        recommendItem.setToggleItem(buildToggleWords(toggleWord));
 
-        /*ToggleWordsViewItem toggleItem = new ToggleWordsViewItem();
+        mRecommendList.add(recommendItem);
+    }
+
+    // 연관어 부분
+    private ArrayList<ToggleWordsViewItem> buildToggleWords(String[][] toggleWord) {
+        ArrayList<ToggleWordsViewItem> mToggleWordsList = new ArrayList<>();
+
         for (int i=0; i<toggleWord.length; i++) {
-            toggleItem.setToggleWordEnglish(toggleWord[i][0]);
-            toggleItem.setToggleWordKorean(toggleWord[i][1]);
-        }*/
+            ToggleWordsViewItem toggleItem = new ToggleWordsViewItem(toggleWord[i][0], toggleWord[i][1]);
+            //Log.println(Log.DEBUG, "debug", "----------------------------------------------------------------");
+            //Log.println(Log.DEBUG, "Data", toggleWord[i][0] + " " + toggleWord[i][1]);
 
-        mRecommendList.add(item);
+            mToggleWordsList.add(toggleItem);
+        }
+
+        return mToggleWordsList;
     }
 
     // 폴더 리스트에 단어의 영어, 한글 정보 추가
@@ -138,13 +138,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 설정 버튼 클릭 시
-    class settingClickListener implements View.OnClickListener {
+    /*class settingClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), Setting.class);
             startActivity(intent);
         }
-    }
+    }*/
 
     //toolbar
     @Override
@@ -191,6 +191,5 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
-
 
 }
