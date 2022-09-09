@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,6 +27,7 @@ public class flash extends AppCompatActivity {
     TextView kor_text, eng_text;
     Switch flash_switch;
     boolean flash_random_bool;
+
 
     Handler flash_handler = new Handler(){
         public void handleMessage(Message msg){
@@ -47,8 +50,8 @@ public class flash extends AppCompatActivity {
     };
 
 
-    List<String> listTitle = Arrays.asList("apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study");
-    List<String> listContent = Arrays.asList(
+    List<String> listTitleOri = Arrays.asList("apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study", "apple", "computer", "study");
+    List<String> listContentOri = Arrays.asList(
             "사과",
             "컴퓨터",
             "공부하다",
@@ -62,6 +65,8 @@ public class flash extends AppCompatActivity {
             "컴퓨터",
             "공부하다"
     );
+    List<String> listTitle = new ArrayList<String>(listTitleOri);
+    List<String> listContent= new ArrayList<String>(listContentOri);
 
 
     @Override
@@ -83,16 +88,26 @@ public class flash extends AppCompatActivity {
         eng_text = (TextView) findViewById(R.id.engWord);
         kor_text = (TextView) findViewById(R.id.korWord);
 
-        eng_text.setText(listTitle.get(wordIndex));
-        kor_text.setText(listContent.get(wordIndex));
 
         //플래시 랜덤이 true이면 suffle
         flash_random_bool = ((glovalVariable) getApplication()).getFlashRandBool();
         if (flash_random_bool) {
-
+            List<Integer> list = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+            Collections.shuffle(list);
+            for (int i=0;i<maxIndex+1;i++){
+                listTitle.set(i, listTitleOri.get(list.get(i)));
+            }
+            for (int i=0;i<maxIndex+1;i++){
+                listContent.set(i, listContentOri.get(list.get(i)));
+            }
+        }
+        else{
+            Collections.copy(listTitle, listTitleOri);
+            Collections.copy(listContent, listContentOri);
         }
 
-
+        eng_text.setText(listTitle.get(wordIndex));
+        kor_text.setText(listContent.get(wordIndex));
 
         //left버튼 비활성화
         left_btn.setEnabled(false);
