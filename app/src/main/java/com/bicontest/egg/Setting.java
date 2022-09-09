@@ -1,12 +1,18 @@
 package com.bicontest.egg;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Setting extends AppCompatActivity {
     @Override
@@ -17,6 +23,10 @@ public class Setting extends AppCompatActivity {
         TextView abc = (TextView)findViewById(R.id.abc);
 
         EditText flashEdit = (EditText) findViewById(R.id.flashEdit);
+
+        Switch flash_random = (Switch) findViewById(R.id.flashRandom);
+        flash_random.setOnCheckedChangeListener(new flashSwitchRandomListener());
+
         //이렇게 안 해주면 flashSecond 수정 후에 activity 새로고침 되면 flash_editText 내용이 초기화됨
         flashEdit.setText(Integer.toString(((glovalVariable) getApplication()).getFlashSecond()));
         flashEdit.addTextChangedListener(new TextWatcher() {
@@ -47,5 +57,20 @@ public class Setting extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+    //switch
+    class flashSwitchRandomListener implements CompoundButton.OnCheckedChangeListener{
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if(isChecked) {
+                ((glovalVariable) getApplication()).setFlashRandBool(true);
+            }
+            else {
+                ((glovalVariable) getApplication()).setFlashRandBool(false);
+            }
+        }
     }
 }
