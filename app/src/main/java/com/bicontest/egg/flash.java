@@ -92,7 +92,10 @@ public class flash extends AppCompatActivity {
         //플래시 랜덤이 true이면 suffle
         flash_random_bool = ((glovalVariable) getApplication()).getFlashRandBool();
         if (flash_random_bool) {
-            List<Integer> list = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
+            List<Integer> list = new ArrayList<Integer>();
+            for (int i=0;i<maxIndex+1;i++){
+                list.add(i);
+            }
             Collections.shuffle(list);
             for (int i=0;i<maxIndex+1;i++){
                 listTitle.set(i, listTitleOri.get(list.get(i)));
