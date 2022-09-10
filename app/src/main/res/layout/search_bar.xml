@@ -9,5 +9,4 @@
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:menu="@menu/search_toolbar">
 
-
 </androidx.appcompat.widget.Toolbar>
