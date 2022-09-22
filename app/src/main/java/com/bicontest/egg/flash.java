@@ -1,5 +1,6 @@
 package com.bicontest.egg;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class flash extends AppCompatActivity {
+    public static Context CONTEXT;
 
     int wordIndex = 0, maxIndex = 11;
 
@@ -73,7 +75,7 @@ public class flash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash);
-
+        CONTEXT = this;
 
         left_btn = (ImageView) findViewById(R.id.leftBtn);
         right_btn = (ImageView) findViewById(R.id.rightBtn);
@@ -90,24 +92,7 @@ public class flash extends AppCompatActivity {
 
 
         //플래시 랜덤이 true이면 suffle
-        flash_random_bool = ((glovalVariable) getApplication()).getFlashRandBool();
-        if (flash_random_bool) {
-            List<Integer> list = new ArrayList<Integer>();
-            for (int i=0;i<maxIndex+1;i++){
-                list.add(i);
-            }
-            Collections.shuffle(list);
-            for (int i=0;i<maxIndex+1;i++){
-                listTitle.set(i, listTitleOri.get(list.get(i)));
-            }
-            for (int i=0;i<maxIndex+1;i++){
-                listContent.set(i, listContentOri.get(list.get(i)));
-            }
-        }
-        else{
-            Collections.copy(listTitle, listTitleOri);
-            Collections.copy(listContent, listContentOri);
-        }
+        setList();
 
         eng_text.setText(listTitle.get(wordIndex));
         kor_text.setText(listContent.get(wordIndex));
@@ -189,7 +174,36 @@ public class flash extends AppCompatActivity {
             }
         }
     }
+    @Override public void onResume(){
+        super.onResume();
+//        Toast toast = Toast.makeText(getApplicationContext(), "짧은 토스트 메시지입니다.",Toast.LENGTH_SHORT);
+//        toast.show();
+        setList();
+    }
+    public void setList(){
+        flash_random_bool = ((glovalVariable) getApplication()).getFlashRandBool();
 
+        if (flash_random_bool) {
+
+
+            List<Integer> list = new ArrayList<Integer>();
+            for (int i=0;i<maxIndex+1;i++){
+                list.add(i);
+            }
+            Collections.shuffle(list);
+            for (int i=0;i<maxIndex+1;i++){
+                listTitle.set(i, listTitleOri.get(list.get(i)));
+            }
+            for (int i=0;i<maxIndex+1;i++){
+                listContent.set(i, listContentOri.get(list.get(i)));
+            }
+        }
+        else{
+            Collections.copy(listTitle, listTitleOri);
+            Collections.copy(listContent, listContentOri);
+        }
+
+    }
 //        flash_button = (ImageView)findViewById(R.id.imageView3);
 //        flash_button.setOnClickListener(new word.flashClickListener());
 //    }
