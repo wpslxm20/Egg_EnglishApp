@@ -1,7 +1,6 @@
 package com.bicontest.egg;
 
 import android.os.Bundle;
-import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.CompoundButton;
@@ -11,14 +10,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class Setting extends AppCompatActivity {
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+
 
         TextView abc = (TextView)findViewById(R.id.abc);
 
@@ -71,6 +70,8 @@ public class Setting extends AppCompatActivity {
             else {
                 ((glovalVariable) getApplication()).setFlashRandBool(false);
             }
+            ((flash)flash.CONTEXT).onResume();
+
         }
     }
 }
