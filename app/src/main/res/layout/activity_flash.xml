@@ -1,160 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".flash">
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
+    <include
+        android:id="@+id/search_toolbar"
+        layout="@layout/search_bar" />
+
+    <!-- ScrollView 외부에서 버튼을 사용하려면
+         ScrollView의 layout_weight를 1로 해줘야 함-->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="#FFE7A9"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="320dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/round_corner"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="4dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="0.3"
-                    app:srcCompat="@drawable/search_icon" />
-
-                <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:minHeight="48dp"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/setting_btn"
-                android:layout_width="30dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:clickable="true"
-                app:srcCompat="@drawable/settin_icon"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="60dp">
 
         <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:background="@drawable/some_round_corner"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="200dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="10dp"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:background="@drawable/some_round_corner"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/leftBtn"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    app:srcCompat="@drawable/left_icon"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="200dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="10dp"
+                    android:orientation="horizontal"
                     android:gravity="center">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="영어"
-                        android:textSize="28sp"
-                        android:textStyle="bold"
-                        android:id="@+id/engWord"
-                        >
-                    </TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="한글"
-                        android:textSize="28sp"
-                        android:layout_marginTop="30dp"
-                        android:textStyle="bold"
-                        android:id="@+id/korWord">
+                    <ImageView
+                        android:id="@+id/leftBtn"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        app:srcCompat="@drawable/left_icon"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
-                    </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="영어"
+                            android:textSize="28sp"
+                            android:textStyle="bold"
+                            android:id="@+id/engWord"
+                            >
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="한글"
+                            android:textSize="28sp"
+                            android:layout_marginTop="30dp"
+                            android:textStyle="bold"
+                            android:id="@+id/korWord">
 
+                        </TextView>
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <ImageView
+                        android:id="@+id/rightBtn"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        app:srcCompat="@drawable/right_icon"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <ImageView
-                    android:id="@+id/rightBtn"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    app:srcCompat="@drawable/right_icon"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="100dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    <Button
+                        android:id="@+id/button"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/flash_btn"
+                        android:text="플래시"
+                        android:textColor="#000000"
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="100dp"
-                android:gravity="bottom"
-                android:orientation="horizontal">
+                        android:textSize="20sp" />
 
-                <Button
-                    android:id="@+id/button"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/flash_btn"
-                    android:text="플래시"
-                    android:textColor="#000000"
+                    <Switch
+                        android:id="@+id/flashSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="9.5dp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_track_selector"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-                    android:textSize="20sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <Switch
-                    android:id="@+id/flashSwitch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="31dp"
-                    android:layout_marginLeft="10dp"
-                    android:thumb="@drawable/switch_thumb"
-                    android:track="@drawable/switch_track_selector"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

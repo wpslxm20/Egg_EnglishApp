@@ -2,10 +2,14 @@ package com.bicontest.egg;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,18 +21,35 @@ public class word extends AppCompatActivity {
 
     private RecyclerAdapter adapter;
 
+    private Toolbar mSearchBar;     // 툴바
+    private ImageButton mSettingBtn;  // 설정 버튼
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word);
+
+        // 툴바
+        mSearchBar = findViewById(R.id.search_toolbar);
+        setSupportActionBar(mSearchBar);
+
+        // 설정 버튼
+        mSettingBtn = (ImageButton) findViewById(R.id.toolbar_setting_btn);
+        mSettingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Log.println(Log.DEBUG, "debug", "----------------------------------------------------------------");
+                //Log.println(Log.DEBUG, "debug", "설정 버튼 클릭");
+                Intent intent = new Intent(getApplicationContext(), Setting.class); // 설정 페이지로 이동
+                startActivity(intent);
+            }
+        });
 
         init();
         getData();
 
         flash_button = (ImageView)findViewById(R.id.imageView3);
         flash_button.setOnClickListener(new flashClickListener());
-
-        setting_btn = (ImageView) findViewById(R.id.setting_btn);
     }
     class flashClickListener implements View.OnClickListener {
         @Override

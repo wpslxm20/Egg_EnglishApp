@@ -10,13 +10,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
 
@@ -26,6 +29,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bicontest.egg.FirstPages.FirstSelectActivity;
 import com.bicontest.egg.MainPages.FoldersAdapter;
 import com.bicontest.egg.MainPages.FoldersViewItem;
 import com.bicontest.egg.MainPages.RecommendAdapter;
@@ -51,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<FoldersViewItem> mFolderList;
     private FoldersAdapter mFolderRecyclerViewAdapter;
 
-    // ImageView setting_btn; // 설정 버튼
-    Toolbar search_bar;       // 툴바
+    private Toolbar mSearchBar;     // 툴바
+    private ImageButton mSettingBtn;  // 설정 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +64,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 툴바
-        search_bar = findViewById(R.id.searchBar);
-        setSupportActionBar(search_bar);
+        mSearchBar = findViewById(R.id.search_toolbar);
+        setSupportActionBar(mSearchBar);
 
         // 설정 버튼
-        //setting_btn = (ImageView) findViewById(R.id.setting_btn);
-        //setting_btn.setOnClickListener(new MainActivity.settingClickListener());
+        mSettingBtn = (ImageButton) findViewById(R.id.toolbar_setting_btn);
+        mSettingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Log.println(Log.DEBUG, "debug", "----------------------------------------------------------------");
+                //Log.println(Log.DEBUG, "debug", "설정 버튼 클릭");
+                Intent intent = new Intent(getApplicationContext(), Setting.class); // 설정 페이지로 이동
+                startActivity(intent);
+            }
+        });
 
         firstInit();
 
@@ -135,61 +147,6 @@ public class MainActivity extends AppCompatActivity {
         item.setFolderName(folderName);
 
         mFolderList.add(item);
-    }
-
-    // 설정 버튼 클릭 시
-    /*class settingClickListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), Setting.class);
-            startActivity(intent);
-        }
-    }*/
-
-    //toolbar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.search_toolbar, menu);
-        SearchManager searchManager = (SearchManager) this.getSystemService(Context.SEARCH_SERVICE);
-        MenuItem mSearch = menu.findItem(R.id.menu_search);
-
-
-        SearchView sv = (SearchView) findViewById(R.id.menu_search);
-        sv.onActionViewExpanded(); //바로 검색 할 수 있도록
-//        if (searchView != null) {
-//            searchView.setSearchableInfo(searchManager.getSearchableInfo(this.getComponentName()));
-//            searchView.setQueryHint("hint");
-//            queryTextListener = new SearchView.OnQueryTextListener() {
-//                 @Override
-//                 public boolean onQueryTextChange(String newText) {
-//
-//                    return true;
-//                 }
-//                 @Override
-//                 public boolean onQueryTextSubmit(String query) {
-//
-//                    return true;
-//                 }
-//            };
-//            searchView.setOnQueryTextListener(queryTextListener);
-//         }
-
-//        SearchView sv = (SearchView) mSearch.getActionView();
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
-
-            @Override
-            public boolean onQueryTextSubmit(String query){
-                return true;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText){
-                return true;
-            }
-        });
-
-
-        return true;
     }
 
 }
