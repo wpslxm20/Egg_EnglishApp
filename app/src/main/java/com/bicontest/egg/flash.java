@@ -7,11 +7,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,10 +27,13 @@ public class flash extends AppCompatActivity {
 
     int wordIndex = 0, maxIndex = 11;
 
-    ImageView left_btn, right_btn, setting_btn;
+    ImageView left_btn, right_btn;
     TextView kor_text, eng_text;
     Switch flash_switch;
     boolean flash_random_bool;
+
+    private Toolbar mSearchBar;     // 툴바
+    private ImageButton mSettingBtn;  // 설정 버튼
 
 
     Handler flash_handler = new Handler(){
@@ -75,16 +80,31 @@ public class flash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash);
+
+        // 툴바
+        mSearchBar = findViewById(R.id.search_toolbar);
+        setSupportActionBar(mSearchBar);
+
+        // 설정 버튼
+        mSettingBtn = (ImageButton) findViewById(R.id.toolbar_setting_btn);
+        mSettingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Log.println(Log.DEBUG, "debug", "----------------------------------------------------------------");
+                //Log.println(Log.DEBUG, "debug", "설정 버튼 클릭");
+                Intent intent = new Intent(getApplicationContext(), Setting.class); // 설정 페이지로 이동
+                startActivity(intent);
+            }
+        });
+
         CONTEXT = this;
 
         left_btn = (ImageView) findViewById(R.id.leftBtn);
         right_btn = (ImageView) findViewById(R.id.rightBtn);
-        setting_btn = (ImageView) findViewById(R.id.setting_btn);
         flash_switch = (Switch) findViewById(R.id.flashSwitch);
 
         left_btn.setOnClickListener(new leftClickListener());
         right_btn.setOnClickListener(new rightClickListener());
-        setting_btn.setOnClickListener(new settingClickListener());
         flash_switch.setOnCheckedChangeListener(new flashSwitchListener());
 
         eng_text = (TextView) findViewById(R.id.engWord);
@@ -139,13 +159,6 @@ public class flash extends AppCompatActivity {
                 eng_text.setText(listTitle.get(wordIndex));
                 kor_text.setText(listContent.get(wordIndex));
             }
-        }
-    }
-    class settingClickListener implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(), Setting.class);
-            startActivity(intent);
         }
     }
 

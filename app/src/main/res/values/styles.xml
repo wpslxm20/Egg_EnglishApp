@@ -10,4 +10,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <!-- SearchView Style-->
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
+        <item name="android:textSize">14.5dp</item> <!-- 검색창 글자 크기 -->
+    </style>
 </resources>
