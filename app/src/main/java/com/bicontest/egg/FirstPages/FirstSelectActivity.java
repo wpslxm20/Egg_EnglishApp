@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,10 @@ public class FirstSelectActivity extends AppCompatActivity {
 
     private String[][] words = {{"apple", "사과"}, {"computer", "컴퓨터"}, {"science", "과학"}, {"student", "학생"}, {"August", "8월"}};
 
+    // 디바이스에 데이터를 저장하기 위한 작업
+    public SharedPreferences mSharedPreferences;
+    public SharedPreferences.Editor editor;
+
     // 영단어 리스트 표시에 필요한 것들
     private RecyclerView mRecyclerView;
     private ArrayList<SelectViewItem> mList;
@@ -30,6 +35,10 @@ public class FirstSelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_select);
+
+        // 디바이스에 데이터를 저장하기 위한 작업
+        mSharedPreferences = getSharedPreferences("firstSelectWords", MODE_PRIVATE);
+        editor = mSharedPreferences.edit();
 
         skipBtn = findViewById(R.id.select_word_skipbtn);          // 건너뛰기 버튼
         completeBtn = findViewById(R.id.select_word_completebtn);  // 선택완료 버튼

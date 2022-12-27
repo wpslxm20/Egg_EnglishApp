@@ -41,7 +41,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecommendAdapter.Reco
             word_english = (TextView) itemView.findViewById(R.id.recommend_word_english);
             word_korean = (TextView) itemView.findViewById(R.id.recommend_word_korean);
 
-           mToggleWordRecyclerView = (RecyclerView) itemView.findViewById(R.id.toggle_words_recyclerview);
+            mToggleWordRecyclerView = (RecyclerView) itemView.findViewById(R.id.toggle_words_recyclerview);
 
             // 추천 단어의 연관단어 목록을 열기 위한 부분
             mOpenBtn = (ImageButton) itemView.findViewById(R.id.recommned_open_btn);

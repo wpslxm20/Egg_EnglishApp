@@ -1,40 +1,24 @@
 package com.bicontest.egg;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
-import android.widget.RelativeLayout;
-import android.widget.SearchView;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuItemCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bicontest.egg.FirstPages.FirstSelectActivity;
 import com.bicontest.egg.MainPages.FoldersAdapter;
 import com.bicontest.egg.MainPages.FoldersViewItem;
 import com.bicontest.egg.MainPages.RecommendAdapter;
 import com.bicontest.egg.MainPages.RecommendViewItem;
-import com.bicontest.egg.MainPages.ToggleWordsAdapter;
 import com.bicontest.egg.MainPages.ToggleWordsViewItem;
 
 import java.util.ArrayList;
@@ -44,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private String[][] recommendWords = {{"apple", "사과"}, {"computer", "컴퓨터"}, {"science", "과학"}, {"student", "학생"}, {"August", "8월"}};
     private String[][][] toggleWords = {{{"banana", "바나나"}, {"grape", "포도"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}};
     private String[] folderNames = {"폴더1", "폴더2", "폴더3"};
+
+    private FragmentManager fragmentManager;
 
     // 추천 영단어 리스트 표시에 필요한 것들
     private RecyclerView mRecommendRecyclerView;
@@ -55,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<FoldersViewItem> mFolderList;
     private FoldersAdapter mFolderRecyclerViewAdapter;
 
-    private Toolbar mSearchBar;     // 툴바
+    private Toolbar mSearchBar;       // 툴바
+    private SearchView mSearchView;   // 검색창
     private ImageButton mSettingBtn;  // 설정 버튼
 
     @Override
@@ -63,9 +50,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fragmentManager = getSupportFragmentManager();
+
         // 툴바
         mSearchBar = findViewById(R.id.search_toolbar);
         setSupportActionBar(mSearchBar);
+
+        // 검색 창
+        mSearchView = (SearchView) findViewById(R.id.searchview);
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Log.println(Log.DEBUG,"Test", "---------------------------------------------------");
+                //Log.println(Log.DEBUG,"Test", "검색어 입력");
+                String searchWord = newText;
+                Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class); // 검색 페이지로 이동
+
+                startActivity(intent);
+
+                return false;
+            }
+        });
 
         // 설정 버튼
         mSettingBtn = (ImageButton) findViewById(R.id.toolbar_setting_btn);
@@ -140,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         return mToggleWordsList;
     }
 
-    // 폴더 리스트에 단어의 영어, 한글 정보 추가
+    // 폴더 리스트에 단어의 정보 추가
     private void addFolderItem(String folderName){
         FoldersViewItem item = new FoldersViewItem();
 

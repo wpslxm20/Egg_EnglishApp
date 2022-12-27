@@ -1,9 +1,14 @@
 package com.bicontest.egg.FirstPages;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,15 +22,31 @@ import java.util.ArrayList;
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView word_english;
-        TextView word_korean;
-
+        private TextView word_english;
+        private TextView word_korean;
+        private RelativeLayout word_layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             word_english = (TextView) itemView.findViewById(R.id.select_word_english);
             word_korean = (TextView) itemView.findViewById(R.id.select_word_korean);
+            word_layout = (RelativeLayout) itemView.findViewById(R.id.select_word_layout);
+
+            // 단어를 클릭했을 때
+            word_layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 클릭된 아이템의 위치 찾아내기
+                    int pos = getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION) {
+                        //word_layout.setBackgroundColor(Color.rgb(255, 231, 169));
+
+                        // 선택 된 단어 배경색 변경
+                        word_layout.setBackgroundResource(R.drawable.border_background_select);
+                    }
+                }
+            });
         }
     }
 
@@ -41,6 +62,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+
 
         View view = inflater.inflate(R.layout.first_select_item, parent, false);
         SelectAdapter.ViewHolder vh = new SelectAdapter.ViewHolder(view);
