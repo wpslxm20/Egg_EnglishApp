@@ -69,6 +69,9 @@ public class FirstSelectActivity extends AppCompatActivity {
         completeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for (int i = 0; i< mList.size();i++){
+
+                }
                 Intent intent = new Intent(FirstSelectActivity.this, MainActivity.class); // 메인 페이지로 이동
                 startActivity(intent);
                 finish(); // 현재 액티비티 파괴
@@ -90,5 +93,11 @@ public class FirstSelectActivity extends AppCompatActivity {
         item.setWordKorean(wordKorean);
 
         mList.add(item);
+    }
+
+    public void moveChecked(Boolean isChecked, int pos){
+        SelectViewItem item = new SelectViewItem();
+
+        item.setWordChecked(isChecked);
     }
 }
