@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bicontest.egg.MainPages.FoldersAdapter;
 import com.bicontest.egg.MainPages.FoldersViewItem;
+import com.bicontest.egg.MainPages.MainFragment;
 import com.bicontest.egg.MainPages.RecommendAdapter;
 import com.bicontest.egg.MainPages.RecommendViewItem;
 import com.bicontest.egg.MainPages.ToggleWordsViewItem;
@@ -25,21 +26,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String[][] recommendWords = {{"apple", "사과"}, {"computer", "컴퓨터"}, {"science", "과학"}, {"student", "학생"}, {"August", "8월"}};
-    private String[][][] toggleWords = {{{"banana", "바나나"}, {"grape", "포도"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}};
-    private String[] folderNames = {"폴더1", "폴더2", "폴더3"};
-
+    // fragment 제어를 위한 부분
     private FragmentManager fragmentManager;
-
-    // 추천 영단어 리스트 표시에 필요한 것들
-    private RecyclerView mRecommendRecyclerView;
-    private ArrayList<RecommendViewItem> mRecommendList;
-    private RecommendAdapter mRecommendRecyclerViewAdapter;
-
-    // 폴더 리스트 표시에 필요한 것들
-    private RecyclerView mFolderRecyclerView;
-    private ArrayList<FoldersViewItem> mFolderList;
-    private FoldersAdapter mFolderRecyclerViewAdapter;
+    private MainFragment mainFragment;
+    private SearchResultFragment searchResultFragment;
 
     private Toolbar mSearchBar;       // 툴바
     private SearchView mSearchView;   // 검색창
@@ -50,7 +40,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // fragment 제어를 위한 부분: MainFragment <-> SearchResultFragment
         fragmentManager = getSupportFragmentManager();
+        mainFragment = new MainFragment();
+        searchResultFragment = new SearchResultFragment();
+
+        // 시작은 MainFragment로 세팅
+        fragmentManager.beginTransaction().replace(R.id.main_container, mainFragment).commit();
 
         // 툴바
         mSearchBar = findViewById(R.id.search_toolbar);
@@ -61,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+                // 검색어 입력 시 검색 Fragment
+                fragmentManager.beginTransaction().add(R.id.main_container, searchResultFragment).commit();
+
                 return false;
             }
 
@@ -69,9 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 //Log.println(Log.DEBUG,"Test", "---------------------------------------------------");
                 //Log.println(Log.DEBUG,"Test", "검색어 입력");
                 String searchWord = newText;
-                Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class); // 검색 페이지로 이동
-
-                startActivity(intent);
 
                 return false;
             }
@@ -88,75 +85,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        firstInit();
-
-        // 추천 단어 리스트에 단어의 영어, 한글 정보 전달 + 연관어 정보
-        for(int i = 0; i < 5; i++){
-            addRecommendItem(recommendWords[i][0], recommendWords[i][1], toggleWords[i]);
-        }
-
-        mRecommendRecyclerViewAdapter = new RecommendAdapter(mRecommendList);
-        mRecommendRecyclerView.setAdapter(mRecommendRecyclerViewAdapter);
-        mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // 수직 리스트
-        //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
-
-        // 폴더 리스트에 폴더명 정보 전달
-        for(int i = 0; i < 2; i++){
-            addFolderItem(folderNames[i]);
-        }
-        addFolderItem("+");
-
-        mFolderRecyclerViewAdapter = new FoldersAdapter(mFolderList);
-        mFolderRecyclerView.setAdapter(mFolderRecyclerViewAdapter);
-        mFolderRecyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 수직 리스트
-        //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
     }
-
-    // 추천 단어 리스트, 폴더 리스트에 필요한 부분
-    private void firstInit(){
-        // 추천 단어 리스트
-        mRecommendRecyclerView = (RecyclerView) findViewById(R.id.recommend_recyclerview);
-        mRecommendList = new ArrayList<>();
-
-        // 폴더 리스트
-        mFolderRecyclerView = (RecyclerView) findViewById(R.id.folders_recyclerview);
-        mFolderList = new ArrayList<>();
-    }
-
-    // 추천 리스트에 단어의 영어, 한글 정보 추가
-    private void addRecommendItem(String wordEnglish, String wordKorean, String[][] toggleWord){
-        RecommendViewItem recommendItem = new RecommendViewItem();
-
-        recommendItem.setWordEnglish(wordEnglish);
-        recommendItem.setWordKorean(wordKorean);
-        recommendItem.setToggleItem(buildToggleWords(toggleWord));
-
-        mRecommendList.add(recommendItem);
-    }
-
-    // 연관어 부분
-    private ArrayList<ToggleWordsViewItem> buildToggleWords(String[][] toggleWord) {
-        ArrayList<ToggleWordsViewItem> mToggleWordsList = new ArrayList<>();
-
-        for (int i=0; i<toggleWord.length; i++) {
-            ToggleWordsViewItem toggleItem = new ToggleWordsViewItem(toggleWord[i][0], toggleWord[i][1]);
-            //Log.println(Log.DEBUG, "debug", "----------------------------------------------------------------");
-            //Log.println(Log.DEBUG, "Data", toggleWord[i][0] + " " + toggleWord[i][1]);
-
-            mToggleWordsList.add(toggleItem);
-        }
-
-        return mToggleWordsList;
-    }
-
-    // 폴더 리스트에 단어의 정보 추가
-    private void addFolderItem(String folderName){
-        FoldersViewItem item = new FoldersViewItem();
-
-        item.setFolderName(folderName);
-
-        mFolderList.add(item);
-    }
-
 }
