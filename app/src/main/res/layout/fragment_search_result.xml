@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="400dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="60dp"
     android:background="#fff3d4"
@@ -12,10 +12,11 @@
         android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommend_recyclerview"
+            android:id="@+id/search_result_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="18dp" />
+            android:layout_marginVertical="18dp"
+            android:layout_marginHorizontal="43dp"/>
 
     </ScrollView>
 </FrameLayout>

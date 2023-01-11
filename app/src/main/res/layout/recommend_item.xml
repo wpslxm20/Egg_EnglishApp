@@ -27,7 +27,9 @@
                 android:gravity="start"
                 android:textColor="@color/black"
                 android:textSize="15dp"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"/>
 
             <!-- 한글 -->
             <TextView
@@ -38,44 +40,52 @@
                 android:textColor="#5C5B5B"
                 android:textSize="15dp"
                 android:layout_marginLeft="5dp"
-                android:layout_toEndOf="@id/recommend_word_english"/>
+                android:layout_toEndOf="@id/recommend_word_english"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"/>
 
             <ImageButton
                 android:id="@+id/recommned_open_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="13dp"
+                android:layout_height="17dp"
                 android:scaleType="fitXY"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentEnd="true"
                 android:background="@android:color/transparent"
                 android:src="@drawable/open_toggle"
-                android:layout_toEndOf="@id/recommend_word_korean"/>
+                android:layout_toEndOf="@id/recommend_word_korean"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"/>
 
             <!-- 닫기 버튼 숨겨두기 -->
             <ImageButton
                 android:id="@+id/recommned_close_btn"
                 android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="13dp"
+                android:layout_height="17dp"
                 android:scaleType="fitXY"
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentEnd="true"
                 android:background="@android:color/transparent"
                 android:src="@drawable/close_toggle"
-                android:layout_toEndOf="@id/recommend_word_korean"/>
+                android:layout_toEndOf="@id/recommend_word_korean"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"/>
 
         </RelativeLayout>
 
         <ImageButton
             android:id="@+id/word_add_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="28dp"
             android:scaleType="fitXY"
             android:layout_marginLeft="10dp"
             android:layout_alignParentEnd="true"
             android:background="@android:color/transparent"
             android:src="@drawable/add_folder_icon"
-            android:layout_toEndOf="@id/recommend_word_group"/>
+            android:layout_toEndOf="@id/recommend_word_group"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"/>
 
         <!-- 토글 열면 보이는 부분. 연관단어 -->
         <!-- 열기 전까지는 숨기기 -->

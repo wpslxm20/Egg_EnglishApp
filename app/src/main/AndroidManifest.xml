@@ -33,11 +33,6 @@
             android:theme="@style/NoTitleBarTheme" />
 
         <activity
-            android:name=".SearchResultActivity"
-            android:exported="true"
-            android:theme="@style/NoTitleBarTheme" />
-
-        <activity
             android:name=".flash"
             android:exported="true"
             android:theme="@style/NoTitleBarTheme" />

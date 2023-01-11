@@ -2,6 +2,8 @@ package com.bicontest.egg;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import com.bicontest.egg.MainPages.RecommendAdapter;
 import com.bicontest.egg.MainPages.RecommendViewItem;
 import com.bicontest.egg.MainPages.ToggleWordsViewItem;
+import com.bicontest.egg.R;
 
 import java.util.ArrayList;
 
@@ -34,6 +37,14 @@ public class SearchResultFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.fragment_search_result, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         firstInit();
 
         // 추천 단어 리스트에 단어의 영어, 한글 정보 전달 + 연관어 정보
@@ -44,15 +55,12 @@ public class SearchResultFragment extends Fragment {
         mSearchRecyclerViewAdapter = new RecommendAdapter(mSearchList);
         mSearchRecyclerView.setAdapter(mSearchRecyclerViewAdapter);
         mSearchRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity())); // 수직 리스트
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_result, container, false);
     }
 
     // 검색 결과 리스트에 필요한 부분
     private void firstInit(){
         // 검색 결과 리스트
-        mSearchRecyclerView = (RecyclerView) requireActivity().findViewById(R.id.recommend_recyclerview);
+        mSearchRecyclerView = (RecyclerView) requireActivity().findViewById(R.id.search_result_recyclerview);
         mSearchList = new ArrayList<>();
     }
 

@@ -3,6 +3,7 @@ package com.bicontest.egg;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -11,18 +12,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.bicontest.egg.MainPages.FoldersAdapter;
-import com.bicontest.egg.MainPages.FoldersViewItem;
 import com.bicontest.egg.MainPages.MainFragment;
-import com.bicontest.egg.MainPages.RecommendAdapter;
-import com.bicontest.egg.MainPages.RecommendViewItem;
-import com.bicontest.egg.MainPages.ToggleWordsViewItem;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                // 검색어 입력 시 검색 Fragment
-                fragmentManager.beginTransaction().add(R.id.main_container, searchResultFragment).commit();
+                Log.println(Log.DEBUG,"Test", "---------------------------------------------------");
+                Log.println(Log.DEBUG,"Test", query);
+
+                // 검색어 입력 시 검색 Fragment 나타나기
+                fragmentManager.beginTransaction().add(R.id.main_container, new SearchResultFragment()).commit();
 
                 return false;
             }
