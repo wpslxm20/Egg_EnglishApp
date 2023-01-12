@@ -15,7 +15,7 @@
             android:id="@+id/search_result_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="18dp"
+            android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="43dp"/>
 
     </ScrollView>

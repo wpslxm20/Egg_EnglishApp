@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,11 @@ import com.bicontest.egg.MainPages.RecommendAdapter;
 import com.bicontest.egg.MainPages.RecommendViewItem;
 import com.bicontest.egg.MainPages.ToggleWordsViewItem;
 import com.bicontest.egg.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -24,7 +30,17 @@ public class SearchResultFragment extends Fragment {
     private String[][] searchWords = {{"apple", "사과"}, {"computer", "컴퓨터"}, {"science", "과학"}, {"student", "학생"}, {"August", "8월"}};
     private String[][][] toggleWords = {{{"banana", "바나나"}, {"grape", "포도"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}};
 
-    // 추천 영단어 리스트 표시에 필요한 것들
+    // 검색어 = 검색할 단어
+    private String mSearchWord;
+
+    // 파이어베이스 DB 접근
+    private DatabaseReference myRef;
+    private FirebaseDatabase database;
+
+    // 검색 결과 클래스
+    //private MutableList mSearchResult = new ExerciseInfo[Constants.allExerciseNum];
+
+    // 검색 결과 리스트 표시에 필요한 것들
     private RecyclerView mSearchRecyclerView;
     private ArrayList<RecommendViewItem> mSearchList;
     private RecommendAdapter mSearchRecyclerViewAdapter;
@@ -45,6 +61,11 @@ public class SearchResultFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // 검색어 데이터 받아오기
+        mSearchWord = this.getArguments().getString("SearchWord");
+        //Log.d("Test", mSearchWord + "-----------------------------");
+
+        // recylerview 세팅
         firstInit();
 
         // 추천 단어 리스트에 단어의 영어, 한글 정보 전달 + 연관어 정보
@@ -89,4 +110,31 @@ public class SearchResultFragment extends Fragment {
 
         return mToggleWordsList;
     }
+
+    // 파이어베이스에서 데이터 가져와서 검색 결과 리스트 만들기
+    /*Thread getWordsThread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            database = FirebaseDatabase.getInstance();   // 데이터베이스 선언, 할당
+            myRef = database.getReference("words");
+
+            myRef.addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(int i = 0; i < Constants.allExerciseNum; i++) {
+
+
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    }
+            );
+        }
+    });*/
 }
