@@ -37,9 +37,6 @@ public class SearchResultFragment extends Fragment {
     private DatabaseReference myRef;
     private FirebaseDatabase database;
 
-    // 검색 결과 클래스
-    //private MutableList mSearchResult = new ExerciseInfo[Constants.allExerciseNum];
-
     // 검색 결과 리스트 표시에 필요한 것들
     private RecyclerView mSearchRecyclerView;
     private ArrayList<RecommendViewItem> mSearchList;
@@ -65,13 +62,22 @@ public class SearchResultFragment extends Fragment {
         mSearchWord = this.getArguments().getString("SearchWord");
         //Log.d("Test", mSearchWord + "-----------------------------");
 
+        getWordsThread.start();
+
+        // 데이터 가져오는 동안 기다리기
+        try {
+            getWordsThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // recylerview 세팅
         firstInit();
 
         // 추천 단어 리스트에 단어의 영어, 한글 정보 전달 + 연관어 정보
-        for(int i = 0; i < 5; i++){
+        /*for(int i = 0; i < 5; i++){
             addSearchItem(searchWords[i][0], searchWords[i][1], toggleWords[i]);
-        }
+        }*/
 
         mSearchRecyclerViewAdapter = new RecommendAdapter(mSearchList);
         mSearchRecyclerView.setAdapter(mSearchRecyclerViewAdapter);
@@ -94,6 +100,8 @@ public class SearchResultFragment extends Fragment {
         searchItem.setToggleItem(buildToggleWords(toggleWord));
 
         mSearchList.add(searchItem);
+
+        mSearchRecyclerViewAdapter.notifyDataSetChanged();
     }
 
     // 연관어 부분
@@ -112,7 +120,7 @@ public class SearchResultFragment extends Fragment {
     }
 
     // 파이어베이스에서 데이터 가져와서 검색 결과 리스트 만들기
-    /*Thread getWordsThread = new Thread(new Runnable() {
+    Thread getWordsThread = new Thread(new Runnable() {
         @Override
         public void run() {
             database = FirebaseDatabase.getInstance();   // 데이터베이스 선언, 할당
@@ -121,11 +129,17 @@ public class SearchResultFragment extends Fragment {
             myRef.addListenerForSingleValueEvent(
                     new ValueEventListener() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(int i = 0; i < Constants.allExerciseNum; i++) {
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                // 해당 단어가 검색어를 포함하고 있는 경우
+                                if(snapshot.child("eng").getValue().toString().contains(mSearchWord)) {
+                                    addSearchItem(
+                                            snapshot.child("eng").getValue().toString(), // 영어
+                                            snapshot.child("kor").getValue().toString(), // 한글
+                                            toggleWords[0]); // 연관어
 
-
-
+                                    Log.d("SearchText", "검색 결과 : " + snapshot.getValue());
+                                }
                             }
                         }
 
@@ -136,5 +150,5 @@ public class SearchResultFragment extends Fragment {
                     }
             );
         }
-    });*/
+    });
 }
