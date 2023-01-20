@@ -104,11 +104,4 @@ public class FirstSelectActivity extends AppCompatActivity {
         }
     }
 
-
-//    public static void moveChecked(Boolean isChecked, int pos){
-//        SelectViewItem item = mList.get(pos);
-//
-//        item.setWordChecked(isChecked);
-//
-//    }
 }
