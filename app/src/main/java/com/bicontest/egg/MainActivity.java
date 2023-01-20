@@ -3,6 +3,7 @@ package com.bicontest.egg;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -11,23 +12,15 @@ import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.bicontest.egg.MainPages.FoldersAdapter;
-import com.bicontest.egg.MainPages.FoldersViewItem;
 import com.bicontest.egg.MainPages.MainFragment;
-import com.bicontest.egg.MainPages.RecommendAdapter;
-import com.bicontest.egg.MainPages.RecommendViewItem;
-import com.bicontest.egg.MainPages.ToggleWordsViewItem;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     // fragment 제어를 위한 부분
     private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
     private MainFragment mainFragment;
     private SearchResultFragment searchResultFragment;
 
@@ -42,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         // fragment 제어를 위한 부분: MainFragment <-> SearchResultFragment
         fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
         mainFragment = new MainFragment();
-        searchResultFragment = new SearchResultFragment();
 
         // 시작은 MainFragment로 세팅
         fragmentManager.beginTransaction().replace(R.id.main_container, mainFragment).commit();
@@ -58,7 +51,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                // 검색어 입력 시 검색 Fragment
+                //Log.println(Log.DEBUG,"Test", "---------------------------------------------------");
+                //Log.println(Log.DEBUG,"Test", query);
+
+                // 검색 리스트를 보여주는 SearchResultFragment로 검색어 데이터 전달
+                Bundle bundle = new Bundle();
+                bundle.putString("SearchWord", query);
+                searchResultFragment = new SearchResultFragment();
+                searchResultFragment.setArguments(bundle);
+
+                // 검색어 입력 시 검색 Fragment 나타나기
                 fragmentManager.beginTransaction().add(R.id.main_container, searchResultFragment).commit();
 
                 return false;
