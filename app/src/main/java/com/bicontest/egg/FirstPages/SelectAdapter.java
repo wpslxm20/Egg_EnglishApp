@@ -20,6 +20,7 @@ import androidx.room.RoomMasterTable;
 import com.bicontest.egg.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 // 최초 화면에서 선택하는 단어
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
@@ -50,12 +51,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                         if (item.getWordChecked()==false){
                             word_layout.setBackgroundResource(R.drawable.border_background_select);
                             item.setWordChecked(true);
-//                            FirstSelectActivity.moveChecked(true, pos);
                         }
                         else {
                             word_layout.setBackgroundResource(R.drawable.border_background_unselect);
                             item.setWordChecked(false);
-//                            FirstSelectActivity.moveChecked(false, pos);
                         }
                         // 선택 된 단어 배경색 변경
 
@@ -65,9 +64,9 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         }
     }
 
-    private ArrayList<SelectViewItem> mList = null;
+    private List<SelectViewItem> mList = null;
 
-    public SelectAdapter(ArrayList<SelectViewItem> mList) {
+    public SelectAdapter(List<SelectViewItem> mList) {
         this.mList = mList;
     }
 

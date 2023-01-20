@@ -1,29 +1,31 @@
 package com.bicontest.egg.FirstPages;
 
+import static androidx.room.OnConflictStrategy.REPLACE;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import java.util.ArrayList;
+import com.bicontest.egg.saveWord;
+
 import java.util.List;
 
-import static androidx.room.OnConflictStrategy.REPLACE;
 @Dao
 public interface MainDao
 {
     @Insert(onConflict = REPLACE)
-    void insert(SelectViewItem mainData);
+    void insert(saveWord mainData);
 
     @Delete
-    void delete(SelectViewItem mainData);
+    void delete(saveWord mainData);
 
     @Delete
-    void reset(ArrayList<SelectViewItem> mainData);
+    void reset(List<saveWord> mainData);
 
 //    @Query("UPDATE word_table SET text = :sText WHERE ID = :sID")
 //    void update(int sID, String sText);
 
     @Query("SELECT * FROM word_table")
-    ArrayList<SelectViewItem> getAll();
+    List<saveWord> getAll();
 }
