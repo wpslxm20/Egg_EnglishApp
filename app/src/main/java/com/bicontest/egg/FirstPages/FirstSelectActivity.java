@@ -23,6 +23,7 @@ public class FirstSelectActivity extends AppCompatActivity {
     // 디바이스에 데이터를 저장하기 위한 작업
     public SharedPreferences mSharedPreferences;
     public SharedPreferences.Editor editor;
+    RoomDB database;
 
     // 영단어 리스트 표시에 필요한 것들
     private RecyclerView mRecyclerView;
@@ -43,6 +44,8 @@ public class FirstSelectActivity extends AppCompatActivity {
         skipBtn = findViewById(R.id.select_word_skipbtn);          // 건너뛰기 버튼
         completeBtn = findViewById(R.id.select_word_completebtn);  // 선택완료 버튼
 
+        database = RoomDB.getInstance(this);
+        mList = database.mainDao().getAll();
         firstInit();
 
         // 리스트에 단어의 영어, 한글 정보 전달

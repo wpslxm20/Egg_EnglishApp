@@ -1,5 +1,6 @@
 package com.bicontest.egg.FirstPages;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
+import androidx.room.RoomMasterTable;
 
 import com.bicontest.egg.R;
 
@@ -20,11 +23,14 @@ import java.util.ArrayList;
 
 // 최초 화면에서 선택하는 단어
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
+    private RoomDB database;
+    private Activity context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView word_english;
         private TextView word_korean;
         private RelativeLayout word_layout;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +89,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull SelectAdapter.ViewHolder holder, int position) {
         SelectViewItem item = mList.get(position);
+        database = RoomDB.getInstance(context);
+
 
         holder.word_english.setText(item.getWordEnglish());  // 영어
         holder.word_korean.setText(item.getWordKorean());   // 한글
