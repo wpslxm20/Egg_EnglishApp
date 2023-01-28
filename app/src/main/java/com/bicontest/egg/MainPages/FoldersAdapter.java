@@ -1,5 +1,6 @@
 package com.bicontest.egg.MainPages;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,14 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bicontest.egg.FirstPages.RoomDB;
 import com.bicontest.egg.MainActivity;
 import com.bicontest.egg.R;
 import com.bicontest.egg.word;
 
 import java.util.ArrayList;
+import java.util.List;
 
 // 메인 화면에서 보이는 폴더
 public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersViewHolder> {
+
+    private RoomDB database;
+    private Activity context;
 
     public class FoldersViewHolder extends RecyclerView.ViewHolder {
         TextView folder_name;
@@ -34,19 +40,22 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
                     // 클릭된 아이템의 위치 찾아내기
                     int pos = getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
-                        Context folderContext = v.getContext();
-                        Intent wordIntent = new Intent(folderContext, word.class);
+                        if (pos < mList.size() - 1){
+                            Context folderContext = v.getContext();
+                            Intent wordIntent = new Intent(folderContext, word.class);
 //                        Intent intent = new Intent(getApplicationContext(), word.class);
-                        ((MainActivity)folderContext).startActivity(wordIntent);
+                            ((MainActivity)folderContext).startActivity(wordIntent);
+                        }
+
                     }
                 }
             });
         }
     }
 
-    private ArrayList<FoldersViewItem> mList = null;
+    private List<FoldersViewItem> mList = null;
 
-    public FoldersAdapter(ArrayList<FoldersViewItem> mList) {
+    public FoldersAdapter(List<FoldersViewItem> mList) {
         this.mList = mList;
     }
 
@@ -66,7 +75,7 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
     @Override
     public void onBindViewHolder(@NonNull FoldersAdapter.FoldersViewHolder holder, int position) {
         FoldersViewItem item = mList.get(position);
-
+        database = RoomDB.getInstance(context);
         holder.folder_name.setText(item.getFolderName());  // 폴더명
     }
 

@@ -10,6 +10,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
+import com.bicontest.egg.MainPages.FolderDAO;
 import com.bicontest.egg.saveWord;
 
 @Database(entities = {saveWord.class}, version = 1, exportSchema = false)
@@ -32,5 +33,5 @@ public abstract class RoomDB extends RoomDatabase {
     }
 
     public abstract MainDao mainDao();
-
+    public abstract FolderDAO folderDAO();
 }

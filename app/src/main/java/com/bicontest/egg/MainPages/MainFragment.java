@@ -13,15 +13,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bicontest.egg.FirstPages.RoomDB;
 import com.bicontest.egg.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainFragment extends Fragment {
 
+    private RoomDB database;
+
     private String[][] recommendWords = {{"apple", "사과"}, {"computer", "컴퓨터"}, {"science", "과학"}, {"student", "학생"}, {"August", "8월"}};
     private String[][][] toggleWords = {{{"banana", "바나나"}, {"grape", "포도"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}};
-    private String[] folderNames = {"폴더1", "폴더2", "폴더3"};
+    private String[] folderNames = {"폴더1", "폴더2", "폴더3" , "폴더4"};
 
     // 추천 영단어 리스트 표시에 필요한 것들
     private RecyclerView mRecommendRecyclerView;
@@ -30,7 +34,7 @@ public class MainFragment extends Fragment {
 
     // 폴더 리스트 표시에 필요한 것들
     private RecyclerView mFolderRecyclerView;
-    private ArrayList<FoldersViewItem> mFolderList;
+    private List<FoldersViewItem> mFolderList = new ArrayList<FoldersViewItem>();
     private FoldersAdapter mFolderRecyclerViewAdapter;
 
     @Override
@@ -43,6 +47,9 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        database = RoomDB.getInstance(getActivity());
+        mFolderList = database.folderDAO().getAll();
 
         firstInit();
 
@@ -57,7 +64,7 @@ public class MainFragment extends Fragment {
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
 
         // 폴더 리스트에 폴더명 정보 전달
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < folderNames.length; i++){
             addFolderItem(folderNames[i]);
         }
         addFolderItem("+");
