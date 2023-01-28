@@ -45,6 +45,7 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recommend_recyclerview"
                     android:layout_width="match_parent"
