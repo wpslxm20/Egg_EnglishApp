@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1076650756662",
+    "firebase_url": "https://egg-english-app-default-rtdb.firebaseio.com",
     "project_id": "egg-english-app",
     "storage_bucket": "egg-english-app.appspot.com"
   },

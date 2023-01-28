@@ -10,7 +10,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = {SelectViewItem.class}, version = 1, exportSchema = false)
+import com.bicontest.egg.saveWord;
+
+@Database(entities = {saveWord.class}, version = 1, exportSchema = false)
 public abstract class RoomDB extends RoomDatabase {
     private static RoomDB database;
 
@@ -22,6 +24,7 @@ public abstract class RoomDB extends RoomDatabase {
         {
             database = Room.databaseBuilder(context.getApplicationContext(), RoomDB.class, DATABASE_NAME)
                     .allowMainThreadQueries()
+                    //아래 메소드는 버전이 변경되면 이전 데이터들이 모두 유실됨
                     .fallbackToDestructiveMigration()
                     .build();
         }
