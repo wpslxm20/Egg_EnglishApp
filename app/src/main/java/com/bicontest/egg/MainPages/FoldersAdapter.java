@@ -1,11 +1,14 @@
 package com.bicontest.egg.MainPages;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,8 +28,10 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
     private RoomDB database;
     private Activity context;
 
+
     public class FoldersViewHolder extends RecyclerView.ViewHolder {
         TextView folder_name;
+
 
 
         public FoldersViewHolder(@NonNull View itemView) {
@@ -45,6 +50,30 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
                             Intent wordIntent = new Intent(folderContext, word.class);
 //                        Intent intent = new Intent(getApplicationContext(), word.class);
                             ((MainActivity)folderContext).startActivity(wordIntent);
+                        }
+                        else if (pos == mList.size() - 1){
+                            final EditText folderEdit = new EditText(v.getContext());
+                            AlertDialog.Builder folderDialog = new AlertDialog.Builder(v.getContext());
+                            folderDialog.setTitle("생성할 폴더명을 입력하세요.");
+                            folderDialog.setView(folderEdit);
+                            folderDialog.setPositiveButton("생성",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            mList.remove(pos);
+                                            addFolderItem(folderEdit.getText().toString());
+                                            addFolderItem("+");
+                                            notifyDataSetChanged();
+                                        }
+                                    });
+                            folderDialog.setNegativeButton("취소",
+                                    new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                        }
+                                    });
+                            folderDialog.show();
                         }
 
                     }
@@ -84,4 +113,9 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
         return mList.size();
     }
 
+    private void addFolderItem(String folderName){
+        FoldersViewItem item = new FoldersViewItem();
+        item.setFolderName(folderName);
+        mList.add(item);
+    }
 }
