@@ -1,16 +1,16 @@
 package com.bicontest.egg.MainPages;
 
+import static androidx.room.OnConflictStrategy.REPLACE;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import static androidx.room.OnConflictStrategy.REPLACE;
-
 import java.util.List;
 
 @Dao
-public interface FolderDAO {
+public interface FoldersDao {
     @Insert(onConflict = REPLACE)
     void insert(FoldersViewItem mainData);
 

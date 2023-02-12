@@ -1,5 +1,6 @@
 package com.bicontest.egg.MainPages;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,8 @@ import java.util.List;
 public class MainFragment extends Fragment {
 
     private RoomDB database;
+
+
 
     private String[][] recommendWords = {{"apple", "사과"}, {"computer", "컴퓨터"}, {"science", "과학"}, {"student", "학생"}, {"August", "8월"}};
     private String[][][] toggleWords = {{{"banana", "바나나"}, {"grape", "포도"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}, {{"Test", "시험"}}};
@@ -49,7 +52,7 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         database = RoomDB.getInstance(getActivity());
-        mFolderList = database.folderDAO().getAll();
+//        mFolderList = database.folderDAO().getAll();
 
         firstInit();
 

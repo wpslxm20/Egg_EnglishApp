@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private SearchView mSearchView;   // 검색창
     private ImageButton mSettingBtn;  // 설정 버튼
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
