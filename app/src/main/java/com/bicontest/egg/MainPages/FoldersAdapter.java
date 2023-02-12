@@ -11,12 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bicontest.egg.FirstPages.RoomDB;
+import com.bicontest.egg.RoomDB;
 import com.bicontest.egg.MainActivity;
 import com.bicontest.egg.R;
 import com.bicontest.egg.word;
 
-import java.util.ArrayList;
 import java.util.List;
 
 // 메인 화면에서 보이는 폴더
@@ -45,6 +44,9 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
                             Intent wordIntent = new Intent(folderContext, word.class);
 //                        Intent intent = new Intent(getApplicationContext(), word.class);
                             ((MainActivity)folderContext).startActivity(wordIntent);
+                        }
+                        else if (pos == mList.size() -1 ){
+                            
                         }
 
                     }

@@ -17,14 +17,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class word extends AppCompatActivity {
-    ImageView flash_button, setting_btn;
+    ImageView flash_button;
+
 
     private RecyclerAdapter adapter;
 
     private Toolbar mSearchBar;     // 툴바
     private ImageButton mSettingBtn;  // 설정 버튼
+    private ImageButton deleteFolderBtn;  // 플래시 실행 버튼
 
-    @Override
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word);
@@ -48,8 +50,17 @@ public class word extends AppCompatActivity {
         init();
         getData();
 
-        flash_button = (ImageView)findViewById(R.id.imageView3);
+        flash_button = (ImageView)findViewById(R.id.btn_play);
         flash_button.setOnClickListener(new flashClickListener());
+
+        // 폴더 삭제 버튼
+       deleteFolderBtn = (ImageButton) findViewById(R.id.btn_delete_folder);
+       deleteFolderBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+           }
+       });
     }
     class flashClickListener implements View.OnClickListener {
         @Override

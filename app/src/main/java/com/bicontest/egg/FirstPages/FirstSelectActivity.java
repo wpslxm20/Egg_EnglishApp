@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.bicontest.egg.MainActivity;
 import com.bicontest.egg.R;
+import com.bicontest.egg.RoomDB;
 import com.bicontest.egg.saveWord;
 
 import java.util.ArrayList;

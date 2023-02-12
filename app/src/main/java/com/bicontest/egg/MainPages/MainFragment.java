@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bicontest.egg.FirstPages.RoomDB;
+import com.bicontest.egg.RoomDB;
 import com.bicontest.egg.R;
 
 import java.util.ArrayList;

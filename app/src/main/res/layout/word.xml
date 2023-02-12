@@ -39,13 +39,20 @@
                     android:text="폴더 1"
                     android:textColor="#000000"
                     android:textSize="24sp" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
+                <ImageButton
+                    android:id="@+id/btn_delete_folder"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_weight="1"
+                    android:src="@drawable/delete_folder_icon"
+                    android:background="@color/white"
+                    android:layout_marginLeft="180dp"
+                    >
+                </ImageButton>
+                <ImageView
+                    android:id="@+id/btn_play"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
                     app:srcCompat="@drawable/play_icon" />
 
             </LinearLayout>
