@@ -47,7 +47,9 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
                     if (pos != RecyclerView.NO_POSITION) {
                         if (pos < mList.size() - 1){
                             Context folderContext = v.getContext();
+                            FoldersViewItem item = mList.get(pos);
                             Intent wordIntent = new Intent(folderContext, word.class);
+                            wordIntent.putExtra("folderIndex", item.getFolderId());
 //                        Intent intent = new Intent(getApplicationContext(), word.class);
                             ((MainActivity)folderContext).startActivity(wordIntent);
                         }
@@ -60,9 +62,12 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
-                                            mList.remove(pos);
+                                            database.folderDAO().delete(mList.get(pos));
+
                                             addFolderItem(folderEdit.getText().toString());
                                             addFolderItem("+");
+                                            mList.clear();
+                                            mList.addAll(database.folderDAO().getAll());
                                             notifyDataSetChanged();
                                         }
                                     });
@@ -116,6 +121,6 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
     private void addFolderItem(String folderName){
         FoldersViewItem item = new FoldersViewItem();
         item.setFolderName(folderName);
-        mList.add(item);
+        database.folderDAO().insert(item);
     }
 }

@@ -20,6 +20,9 @@ public interface FoldersDao {
     @Delete
     void reset(List<FoldersViewItem> mainData);
 
+//    @Query("SELECT * FROM folder_table WHERE mFolderName = :mFolderName") // id 이용해서 record 불러오기
+
+
 //    @Query("UPDATE folder_table SET mFolderName = :sText WHERE ID = :sID")
 //    void update(int sID, String sText);
 

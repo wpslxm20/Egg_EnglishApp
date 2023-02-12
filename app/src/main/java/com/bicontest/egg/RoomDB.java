@@ -7,7 +7,8 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.bicontest.egg.FirstPages.MainDao;
-import com.bicontest.egg.MainPages.FolderDAO;
+
+import com.bicontest.egg.MainPages.FoldersDao;
 import com.bicontest.egg.MainPages.FoldersViewItem;
 
 @Database(entities = {saveWord.class, FoldersViewItem.class}, version = 1, exportSchema = false)
@@ -29,7 +30,7 @@ public abstract class RoomDB extends RoomDatabase {
         return database;
     }
 
-    public abstract FolderDAO folderDAO();
+    public abstract FoldersDao folderDAO();
     public abstract MainDao mainDao();
 
 }

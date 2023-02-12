@@ -52,8 +52,11 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         database = RoomDB.getInstance(getActivity());
-//        mFolderList = database.folderDAO().getAll();
-
+        mFolderList = database.folderDAO().getAll();
+        if ( mFolderList.size() == 0){
+            addFolderItem("+");
+        }
+//        database.folderDAO().reset(mFolderList);
         firstInit();
 
         // 추천 단어 리스트에 단어의 영어, 한글 정보 전달 + 연관어 정보
@@ -66,11 +69,7 @@ public class MainFragment extends Fragment {
         mRecommendRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity())); // 수직 리스트
         //mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false)); // 수평 리스트
 
-        // 폴더 리스트에 폴더명 정보 전달
-        for(int i = 0; i < folderNames.length; i++){
-            addFolderItem(folderNames[i]);
-        }
-        addFolderItem("+");
+
 
         mFolderRecyclerViewAdapter = new FoldersAdapter(mFolderList);
         mFolderRecyclerView.setAdapter(mFolderRecyclerViewAdapter);
@@ -86,7 +85,7 @@ public class MainFragment extends Fragment {
 
         // 폴더 리스트
         mFolderRecyclerView = (RecyclerView) requireActivity().findViewById(R.id.folders_recyclerview);
-        mFolderList = new ArrayList<>();
+//        mFolderList = new ArrayList<>();
     }
 
     // 추천 리스트에 단어의 영어, 한글 정보 추가
@@ -121,6 +120,6 @@ public class MainFragment extends Fragment {
 
         item.setFolderName(folderName);
 
-        mFolderList.add(item);
+        database.folderDAO().insert(item);
     }
 }

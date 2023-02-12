@@ -18,13 +18,16 @@ import java.util.List;
 
 public class word extends AppCompatActivity {
     ImageView flash_button;
-
+    private RoomDB database;
 
     private RecyclerAdapter adapter;
 
     private Toolbar mSearchBar;     // 툴바
     private ImageButton mSettingBtn;  // 설정 버튼
     private ImageButton deleteFolderBtn;  // 플래시 실행 버튼
+    private ImageButton addWordBtn;
+
+    private int folderId;
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,9 @@ public class word extends AppCompatActivity {
         // 툴바
         mSearchBar = findViewById(R.id.search_toolbar);
         setSupportActionBar(mSearchBar);
+
+        // 현재 폴더 id 가져오기
+        folderId = getIntent().getIntExtra("folderId", 1);
 
         // 설정 버튼
         mSettingBtn = (ImageButton) findViewById(R.id.toolbar_setting_btn);
@@ -53,9 +59,18 @@ public class word extends AppCompatActivity {
         flash_button = (ImageView)findViewById(R.id.btn_play);
         flash_button.setOnClickListener(new flashClickListener());
 
-        // 폴더 삭제 버튼
-       deleteFolderBtn = (ImageButton) findViewById(R.id.btn_delete_folder);
-       deleteFolderBtn.setOnClickListener(new View.OnClickListener() {
+//        // 폴더 삭제 버튼
+//       deleteFolderBtn = (ImageButton) findViewById(R.id.btn_delete_folder);
+//       deleteFolderBtn.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View view) {
+//
+//           }
+//       });
+
+       // 단어 추가 버튼
+       addWordBtn = (ImageButton) findViewById(R.id.btn_add_word);
+       addWordBtn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
 
@@ -97,15 +112,15 @@ public class word extends AppCompatActivity {
                 "컴퓨터",
                 "공부하다"
         );
-        for (int i = 0; i < listTitle.size(); i++) {
-            // 각 List의 값들을 data 객체에 set 해줍니다.
-            Data data = new Data();
-            data.setTitle(listTitle.get(i));
-            data.setContent(listContent.get(i));
-
-            // 각 값이 들어간 data를 adapter에 추가합니다.
-            adapter.addItem(data);
-        }
+//        for (int i = 0; i < listTitle.size(); i++) {
+//            // 각 List의 값들을 data 객체에 set 해줍니다.
+//            Data data = new Data();
+//            data.setTitle(listTitle.get(i));
+//            data.setContent(listContent.get(i));
+//
+//            // 각 값이 들어간 data를 adapter에 추가합니다.
+//            adapter.addItem(data);
+//        }
 
         // adapter의 값이 변경되었다는 것을 알려줍니다.
         adapter.notifyDataSetChanged();
