@@ -20,11 +20,14 @@ public interface FoldersDao {
     @Delete
     void reset(List<FoldersViewItem> mainData);
 
-//    @Query("SELECT * FROM folder_table WHERE mFolderName = :mFolderName") // id 이용해서 record 불러오기
+    @Query("SELECT mFolderName FROM folder_table WHERE folderId = :folderId") // id 이용해서 record 불러오기
+    String getFolderNameById(int folderId);
 
-
+    @Query("DELETE FROM folder_table WHERE folderId = :folderId")
+    void deleteFolderById(int folderId);
 //    @Query("UPDATE folder_table SET mFolderName = :sText WHERE ID = :sID")
 //    void update(int sID, String sText);
+
 
     @Query("SELECT * FROM folder_table")
     List<FoldersViewItem> getAll();

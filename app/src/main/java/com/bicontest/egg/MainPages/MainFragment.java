@@ -43,7 +43,11 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        database = RoomDB.getInstance(getActivity());
+        mFolderList = database.folderDAO().getAll();
+        if ( mFolderList.size() == 0){
+            addFolderItem("+");
+        }
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
@@ -51,11 +55,7 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        database = RoomDB.getInstance(getActivity());
-        mFolderList = database.folderDAO().getAll();
-        if ( mFolderList.size() == 0){
-            addFolderItem("+");
-        }
+
 //        database.folderDAO().reset(mFolderList);
         firstInit();
 
@@ -121,5 +121,7 @@ public class MainFragment extends Fragment {
         item.setFolderName(folderName);
 
         database.folderDAO().insert(item);
+        mFolderList.clear();
+        mFolderList.addAll(database.folderDAO().getAll());
     }
 }

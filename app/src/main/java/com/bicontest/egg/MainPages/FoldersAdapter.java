@@ -49,7 +49,7 @@ public class FoldersAdapter extends RecyclerView.Adapter<FoldersAdapter.FoldersV
                             Context folderContext = v.getContext();
                             FoldersViewItem item = mList.get(pos);
                             Intent wordIntent = new Intent(folderContext, word.class);
-                            wordIntent.putExtra("folderIndex", item.getFolderId());
+                            wordIntent.putExtra("folderId", item.getFolderId());
 //                        Intent intent = new Intent(getApplicationContext(), word.class);
                             ((MainActivity)folderContext).startActivity(wordIntent);
                         }

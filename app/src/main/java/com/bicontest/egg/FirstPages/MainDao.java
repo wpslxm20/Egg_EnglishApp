@@ -23,8 +23,8 @@ public interface MainDao
     @Delete
     void reset(List<saveWord> mainData);
 
-//    @Query("UPDATE word_table SET text = :sText WHERE ID = :sID")
-//    void update(int sID, String sText);
+    @Query("SELECT * FROM word_table WHERE folderId = :sID")
+    List<saveWord> getWordByFolder(int sID);
 
     @Query("SELECT * FROM word_table")
     List<saveWord> getAll();
